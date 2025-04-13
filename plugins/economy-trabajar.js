@@ -18,7 +18,6 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 handler.help = ['work']
 handler.tags = ['rpg']
 handler.command = ['work', 'trabajar', 'w']
-handler.register = true 
 export default handler
 
 function segundosAHMS(segundos) {
