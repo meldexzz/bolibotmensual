@@ -1,11 +1,15 @@
-import fg from 'api-dylux' 
-import fetch from 'node-fetch'
-import axios from 'axios'
+
+import fg from 'api-dylux'; 
+import fetch from 'node-fetch';
+import axios from 'axios';
+
 let handler = async (m, { conn, args, command, usedPrefix }) => {
-if (!args[0]) throw `
+    if (!args[0]) {
+        // Enviar el mensaje directamente sin usar "throw"
+        return m.reply(`
 • 𝐒𝐂𝐑𝐈𝐌 •
 
-⏱ 𝐇𝐎𝐑𝐀𝐑𝐈𝐎                       •
+⏱ 𝐇𝐎𝐑𝐀𝐑𝐈𝐎                       
 🇲🇽 𝐌𝐄𝐗𝐈𝐂𝐎 : 
 🇨🇴 𝐂𝐎𝐋𝐎𝐌𝐁𝐈𝐀 :                
 
@@ -22,12 +26,16 @@ if (!args[0]) throw `
     ㅤʚ 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄𝐒:
     🥷🏻 ┇ 
     🥷🏻 ┇
-                 
-` 
-}
-handler.help = ['scrim']
-handler.tags = ['freefire']
-handler.command = /^(scrim)$/i
-handler.group = true
-handler.admin = true
-export default handler
+`);
+    }
+
+    // Aquí puedes agregar más lógica según lo que quieras hacer con el comando
+};
+
+handler.help = ['scrim'];
+handler.tags = ['freefire'];
+handler.command = /^(scrim)$/i;
+handler.group = true;
+handler.admin = true;
+
+export default handler;
