@@ -23,5 +23,5 @@ handler.help = ['depositar']
 handler.tags = ['economy']
 handler.command = ['deposit', 'depositar', 'd', 'dep', 'aguardar']
 handler.group = true;
-handler.register = true
+
 export default handler 
