@@ -14,5 +14,4 @@ let handler = async (m) => {
 handler.help = ['excavar']
 handler.tags = ['mascota']
 handler.command = ['dig', 'excavar']
-handler.register = true 
 export default handler;
