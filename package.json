@@ -1,5 +1,5 @@
 {
-  "name": "Barboza",
+  "name": "Bolillo",
   "version": "2.2.0",
   "description": "Super WhatsApp Bot Multi Device",
   "main": "index.js",
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Elrebelde1/BarbozaBot-Ai.git",
   "author": {
-    "name": "Barboza"
+    "name": "Bolillo"
   },
   "repository": {
     "type": "git",
