@@ -26,6 +26,5 @@ global.db.data.users[m.sender].lastcofre = new Date * 1
 handler.help = ['purgatorio']
 handler.tags = ['freefire']
 handler.command = ['purga', 'purgatorio', 'purg'] 
-handler.register = true
 handler.admin = true
 export default handler
