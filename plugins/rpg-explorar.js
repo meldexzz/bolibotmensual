@@ -60,7 +60,6 @@ let handler = async (m, { conn, text, command }) => {
 handler.tags = ['rpg']
 handler.help = ['explorar']
 handler.command = ['explorar', 'adventure', 'bosque']
-handler.register = true
 handler.group = true
 
 export default handler
