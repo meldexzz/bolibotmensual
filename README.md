@@ -1,5 +1,5 @@
 
-### `BolilloBot 🔥`
+### `BolilloBot 💎`
 > *Bolillo*
-![Menu Principa](https://qu.ax/CnYvh.jpg)
+![Menu Principa](https://qu.ax/JhPdx.jpg)
 </p>
