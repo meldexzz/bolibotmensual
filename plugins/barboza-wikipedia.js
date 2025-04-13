@@ -32,6 +32,4 @@ m.reply('*⚠️ ɴᴏ sᴇ ᴇɴᴄᴏɴᴛʀᴏ ɴɪɴɢᴜɴᴀ ɪɴғᴏʀ�
 handler.help = ['wikipedia'].map((v) => v + ' <apa>');
 handler.tags = ['buscadores'];
 handler.command = /^(wiki|wikipedia)$/i;
-handler.register = true
-handler.limit = 1
 export default handler;
