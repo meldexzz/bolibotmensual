@@ -53,5 +53,5 @@ const handler = async (m, { conn, args }) => {
 handler.help = ['quotly *<texto>*']
 handler.tags = ['sticker']
 handler.command = ['quotly', 'qc']
-handler.register = true 
+
 export default handler
