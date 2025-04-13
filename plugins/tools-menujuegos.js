@@ -55,7 +55,6 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 };
 
 handler.command = /^(menujuego|menujuegos|juegos)$/i;
-handler.register = false;
 export default handler;
 
 function clockString(ms) {
