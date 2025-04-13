@@ -21,6 +21,11 @@ let handler = async (m, { conn }) => {
 │🔥➺ .xnxx link
 │🔥➺ .xnxxsearch texto
 │🔥➺ .pornhubsearch texto
+│🔥➺ .videoxxx
+│🔥➺ .videoxxxlesbi
+│🔥➺ .pack
+│🔥➺ .pack2
+│🔥➺ .pack3
 ╰━━━━━━⋆★⋆━━━━━━⬣
 
 » 𝗧𝗥𝗜𝗣𝗘 𝗫
