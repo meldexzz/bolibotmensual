@@ -25,34 +25,23 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 `;
 
         const buttons = [
-            {
-                buttonId: `${usedPrefix}anotarse`,
-                buttonText: { displayText: "✍️ Anotarse" },
-                type: 1
-            }
+            { buttonId: `${usedPrefix}anotarse`, buttonText: { displayText: "✍️ Anotarse" }, type: 1 }
         ];
 
-        await conn.sendMessage(
-            m.chat,
-            {
-                text: lista,
-                footer: "Presiona el botón para anotarte",
-                buttons: buttons,
-                headerType: 1
-            },
-            { quoted: m }
-        );
+        await conn.sendMessage(m.chat, {
+            text: lista,
+            footer: "Presiona el botón para anotarte",
+            buttons: buttons,
+            headerType: 1
+        });
+
         return;
     }
 
     // Registrar al usuario al presionar el botón de anotarse
     if (command === 'anotarse') {
         if (anotados.includes(m.sender)) {
-            await conn.sendMessage(
-                m.chat,
-                { text: `❗ Ya estás anotado.` },
-                { quoted: m }
-            );
+            await conn.sendMessage(m.chat, { text: "❗ Ya estás anotado." });
         } else {
             anotados.push(m.sender); // Agregar al usuario a la lista
             let listaActualizada = `
@@ -73,24 +62,17 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 `;
 
             const buttons = [
-                {
-                    buttonId: `${usedPrefix}anotarse`,
-                    buttonText: { displayText: "✍️ Anotarse" },
-                    type: 1
-                }
+                { buttonId: `${usedPrefix}anotarse`, buttonText: { displayText: "✍️ Anotarse" }, type: 1 }
             ];
 
-            await conn.sendMessage(
-                m.chat,
-                {
-                    text: listaActualizada,
-                    footer: "Presiona el botón para anotarte",
-                    buttons: buttons,
-                    headerType: 1
-                },
-                { quoted: m }
-            );
+            await conn.sendMessage(m.chat, {
+                text: listaActualizada,
+                footer: "Presiona el botón para anotarte",
+                buttons: buttons,
+                headerType: 1
+            });
         }
+
         return;
     }
 };
