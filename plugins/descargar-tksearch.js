@@ -61,8 +61,8 @@ async function sendVideoWithButtons(session, m, conn, usedPrefix) {
     const video = session.videos[session.currentIndex];
 
     const caption = session.currentIndex === 0 
-        ? `✅ Usa el botón para ver más videos.\n\n_*©Prohibido La Copia, Código Oficial De Barboza Bot ™*_`
-        : `_*©Prohibido La Copia, Código Oficial De Barboza Bot™*_`;
+        ? `✅ Usa el botón para ver más videos.\n\n_*©Prohibido La Copia, Código Oficial De Bolillo Bot ™*_`
+        : `_*©Prohibido La Copia, Código Oficial De Bolillo Bot™*_`;
 
     try {
         const buttons = [];
