@@ -37,7 +37,6 @@ let handler = async (m, { isPrems, conn }) => {
 handler.help = ['kalahari'];
 handler.tags = ['freefire'];
 handler.command = ['kalahari']; 
-handler.register = true;
 handler.admin = true;
 
 export default handler;
