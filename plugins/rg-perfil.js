@@ -2,7 +2,7 @@ import PhoneNumber from 'awesome-phonenumber';
 import fetch from 'node-fetch';
 import fs from 'fs';
 
-const imagen1 = 'https://qu.ax/Mvhfa.jpg';
+const imagen1 = 'https://f.uguu.se/wGXtlXzM.jpg';
 
 const loadMarriages = () => {
     if (fs.existsSync('./media/database/marry.json')) {
