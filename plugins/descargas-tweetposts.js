@@ -63,7 +63,5 @@ console.error(error)
 handler.help = ['tweetposts']
 handler.tags = ['buscador']
 handler.command = ['tweetposts']
-handler.register = true
-handler.chocolates = 1
 
 export default handler;
