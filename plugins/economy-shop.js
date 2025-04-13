@@ -30,5 +30,4 @@ let handler = async (m, { conn, args }) => {
 handler.help = ['buy <cantidad>'];
 handler.tags = ['rpg'];
 handler.command = ['buy'];
-handler.register = true;
 export default handler;
