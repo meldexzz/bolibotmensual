@@ -50,5 +50,5 @@ global.db.data.users[m.sender].lastcofre = new Date * 1
 handler.help = ['menuff']
 handler.tags = ['freefire' ,'main'] 
 handler.command = ['menuff', 'menufreefire'] 
-handler.register = true
+
 export default handler
