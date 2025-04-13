@@ -1,3 +1,4 @@
+
 import fs from 'fs';
 import fetch from 'node-fetch';
 
@@ -23,11 +24,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       const data = await response.json();
       if (!data.status || !data.data)
         throw new Error("No se encontró la aplicación.");
-      
+
       const app = data.data;
       // Guardamos la sesión con la info de la app
       apkSession.set(m.chat, { app });
-      
+
       // Descripción de la aplicación
       let description = `⌘━─━─≪ *ᑲ᥆ᥣіᥣᥣ᥆ ᑲ᥆𝗍 ᥲі™* ≫─━─━⌘\n`;
       description += `➷ *Nombre:* ${app.name}\n`;
@@ -36,9 +37,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       description += `➷ *Publicado:* ${app.publish}\n`;
       description += `➷ *Tamaño:* ${app.size}\n`;
       description += `➷ *Descargas:* ${app.stats.downloads.toLocaleString()}\n`;
-o      description += `➷ *Rating:* ${app.stats.rating.average} (${app.stats.rating.total} valoraciones)\n\n`;
+      description += `➷ *Rating:* ${app.stats.rating.average} (${app.stats.rating.total} valoraciones)\n\n`;
       description += `_⚠️Estas Seguro De Descargar Esta Aplicación??._`;
-      
+
       // Botón para descarga
       const buttons = [
         {
@@ -47,7 +48,7 @@ o      description += `➷ *Rating:* ${app.stats.rating.average} (${app.stats.ra
           type: 1
         }
       ];
-      
+
       // Enviar mensaje con la imagen (icono de la app) y descripción
       await conn.sendMessage(
         m.chat,
@@ -74,7 +75,7 @@ o      description += `➷ *Rating:* ${app.stats.rating.average} (${app.stats.ra
     }
     return;
   }
-  
+
   // Rama: Al pulsar el botón de descarga (.apk_download)
   if (command === 'apk_download') {
     let session = apkSession.get(m.chat);
@@ -100,7 +101,7 @@ o      description += `➷ *Rating:* ${app.stats.rating.average} (${app.stats.ra
     );
     return;
   }
-  
+
   // Caso: .apk sin término de búsqueda
   if (command === 'apk' && !text) {
     let example = `${usedPrefix}apk WhatsApp`;
