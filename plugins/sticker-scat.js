@@ -15,5 +15,4 @@ let handler = async (m, {
 handler.help = ['scat']
 handler.tags = ['sticker']
 handler.command = ["scat", "stickercat", "cats"]
-handler.register = true 
 export default handler
