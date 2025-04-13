@@ -4,7 +4,7 @@ import fs from 'fs'
 import moment from 'moment-timezone';
 import fetch from 'node-fetch';
 let handler  = async (m, { conn, usedPrefix: _p }) => {
-const res = await fetch('https://api.github.com/repos/elrebelde1/BarbozaBot-Ai');
+const res = await fetch('https://github.com/meldexzz/bolibotmensual.git');
 const json = await res.json();
 function kyun(seconds){
   function pad(s){
