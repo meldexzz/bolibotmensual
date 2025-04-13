@@ -15,6 +15,6 @@ await conn.sendFile(m.chat, audio.data, 'audio.mp3', '', m, null, { mimetype: 'a
 handler.help = ['tomp3']
 handler.tags = ['tools']
 handler.command = ['tomp3', 'toaudio'] 
-handler.register = true
+
 
 export default handler
