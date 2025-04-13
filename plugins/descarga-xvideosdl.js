@@ -24,7 +24,6 @@ const handler = async (m, { conn, args, command, usedPrefix, text }) => {
 };
 
 handler.command = ['xvideosdl'];
-handler.register = true;
 handler.group = false;
 
 export default handler;
