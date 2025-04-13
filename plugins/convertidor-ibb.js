@@ -43,5 +43,5 @@ let handler = async (m, { conn }) => {
 handler.tags = ['transformador']
 handler.help = ['ibb']
 handler.command = ['ibb', 'tourl3']
-handler.register = true 
+
 export default handler
