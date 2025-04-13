@@ -18,16 +18,16 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/Elrebelde1/BarbozaBot-Ai.git",
+  "homepage": "https://github.com/meldexzz/bolibotmensual.git",
   "author": {
-    "name": "Bolillo"
+    "name": "meldexzz"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Elrebelde1/BarbozaBot-Ai.git"
+    "url": "https://github.com/meldexzz/bolibotmensual.git"
   },
   "bugs": {
-    "url": "https://github.com/Elrebelde1/BarbozaBot-Ai.git"
+    "url": "https://github.com/meldexzz/bolibotmensual.git"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
