@@ -135,6 +135,5 @@ handler.help = ['adivinabandera'];
 handler.tags = ['game'];
 handler.command = ['adivinabandera'];
 handler.group = true;
-handler.register = true;
 
 export default handler;
