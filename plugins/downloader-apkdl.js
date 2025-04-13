@@ -29,14 +29,14 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       apkSession.set(m.chat, { app });
       
       // Descripción de la aplicación
-      let description = `⌘━─━─≪ *Bot Barboza ™* ≫─━─━⌘\n`;
+      let description = `⌘━─━─≪ *ᑲ᥆ᥣіᥣᥣ᥆ ᑲ᥆𝗍 ᥲі™* ≫─━─━⌘\n`;
       description += `➷ *Nombre:* ${app.name}\n`;
       description += `➷ *Desarrollador:* ${app.developer}\n`;
       description += `➷ *ID:* ${app.id}\n`;
       description += `➷ *Publicado:* ${app.publish}\n`;
       description += `➷ *Tamaño:* ${app.size}\n`;
       description += `➷ *Descargas:* ${app.stats.downloads.toLocaleString()}\n`;
-      description += `➷ *Rating:* ${app.stats.rating.average} (${app.stats.rating.total} valoraciones)\n\n`;
+o      description += `➷ *Rating:* ${app.stats.rating.average} (${app.stats.rating.total} valoraciones)\n\n`;
       description += `_⚠️Estas Seguro De Descargar Esta Aplicación??._`;
       
       // Botón para descarga
