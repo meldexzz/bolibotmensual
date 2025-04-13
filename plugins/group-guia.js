@@ -55,5 +55,4 @@ await conn.sendFile(m.chat, img, 'img.jpg', texto, fkontak)
 global.db.data.users[m.sender].lastcofre = new Date * 1
 }
 handler.command = ['guia'] 
-handler.register = true
 export default handler
