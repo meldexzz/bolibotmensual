@@ -165,5 +165,4 @@ return
 handler.help = ['sopa', 'buscarpalabras']; 
  handler.tags = ['game']; 
 handler.command = /^(buscarpalabra|sopa|soup|wordsearch|wordfind|spdeletras|spletras|sppalabras|spalabras|spdepalabras)$/i
-handler.register = true
 export default handler
