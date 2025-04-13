@@ -18,8 +18,8 @@ FN:${name}
 ORG:${empresa};
 TITLE:CEO & Fundador
 TEL;waid=${numcreador}:${new PhoneNumber('+' + numcreador).getNumber('international')}
-EMAIL:sebastianbarbaro82@gmail.com
-URL:https://www.instagram.com/sebastian_barboza13
+EMAIL:
+URL:
 NOTE:${about}
 ADR:;;Dirección de tu empresa;;;;
 X-ABADR:ES
