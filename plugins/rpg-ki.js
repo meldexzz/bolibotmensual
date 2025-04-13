@@ -9,5 +9,4 @@ let handler = async (m, {conn, usedPrefix}) => {
 handler.help = ['ki']
 handler.tags = ['rpg']
 handler.command = ['ki']
-handler.register = true 
 export default handler
