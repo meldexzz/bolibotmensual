@@ -36,7 +36,6 @@ if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `*[❗] 𝐋𝐨𝐬 �
 handler.help = ['xnxxsearch'].map((v) => v + ' <query>');
 handler.tags = ['downloader', 'premium'];
 handler.command = ['xnxxsearch', 'xnxxs'];
-handler.register = true;
 export default handler;
 
 async function xnxxsearch(query) {
