@@ -280,7 +280,7 @@ process.on('uncaughtException', console.error);
 async function connectSubBots() {
 const subBotDirectory = './YukiJadiBot';
 if (!existsSync(subBotDirectory)) {
-console.log('🌠 BarbozaBot-Ai no tiene Sub-Bots vinculados.');
+console.log('🌠 No tienes Sub-Bots vinculados.');
 return;
 }
 
@@ -307,11 +307,11 @@ const mainBotAuthFile = 'YukiSession';
 try {
 const mainBot = await connectionUpdate(mainBotAuthFile);
 global.conns.push(mainBot);
-console.log(chalk.bold.greenBright(`🌠 Ai Barboza conectado correctamente.`))
+console.log(chalk.bold.greenBright(`🌠 Ai Bolillo conectado correctamente.`))
 
 await connectSubBots();
 } catch (error) {
-console.error(chalk.bold.cyanBright(`🥀 Error al iniciar BarbozaBot-Ai: `, error))
+console.error(chalk.bold.cyanBright(`🥀 Error al iniciar BolilloBot-Ai: `, error))
 }
 })();
 
