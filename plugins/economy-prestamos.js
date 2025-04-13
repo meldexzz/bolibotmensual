@@ -150,7 +150,6 @@ handler.tags = ['economy'];
 handler.command = ['prestar', 'pagar', 'deuda'];
 handler.disabled = false;
 handler.group = true;
-handler.register = true;
 
 export default handler;
 
