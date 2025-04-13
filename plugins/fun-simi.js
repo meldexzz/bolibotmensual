@@ -68,7 +68,6 @@ handler.help = ['chatgpt <texto>', 'ia <texto>']
 
 handler.tags = ['ai']
 
-handler.register = true
 
 // handler.estrellas = 1
 
