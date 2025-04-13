@@ -19,5 +19,4 @@ handler.help = ['afk [alasan]'];
 handler.tags = ['econ'];
 handler.command = /^afk$/i;
 handler.money = 95
-handler.register = true
 export default handler;
