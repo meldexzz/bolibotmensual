@@ -30,6 +30,5 @@ let handler = async (m, { conn, args }) => {
 handler.help = ['capcutdownload *<url cc>*'];
 handler.tags = ['downloader'];
 handler.command = ['capcut', 'ccdownload'];
-handler.register = true;
 
 export default handler;
