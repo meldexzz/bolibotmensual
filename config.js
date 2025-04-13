@@ -10,10 +10,7 @@ import axios from 'axios'
 
 global.owner = [
   ['584146277368', 'Barboza OFC',true],
-  ['50577688033', 'Goku',true],
-  ['584123989549', 'sisked',true],
-  ['50557865603', 'Willzek',true],
-  ['5212441357601', 'Emma (Violets Version)',true],
+  ['5215649707515', 'meldexzz',true],
 ]
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
@@ -23,17 +20,17 @@ global.prems = []
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = `[ 🌪️Sticker Maker`
-global.author = 'ᑲ᥆𝗍 ᑲᥲrᑲ᥆zᥲ 🌪️]'
-global.stickpack = '©ᑲ᥆𝗍 ᑲᥲrᑲ᥆zᥲ-ᥲі'
-global.stickauth = 'ᑲᥡ ᑲᥲrᑲ᥆zᥲ'
-global.wm = 'ᑲᥲrᑲ᥆zᥲ 🌪️'
-global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ᑲᥲrᑲ᥆zᥲ ❀'
-global.wait = '🌪️ *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ, sᴏʏ ʟᴇɴᴛ𝙾... ฅ^•ﻌ•^ฅ\n\n> ᑲ᥆𝗍 ᑲᥲrᑲ᥆zᥲ 🌪️*'
-global.botname = '[ 🌪️𝐁𝐚𝐫𝐛𝐨𝐳𝐚 𝐀𝐢 𝐖𝐡𝐚𝐬𝐀𝐩𝐩 𝐁𝐨𝐭 ]'
-global.textbot = `Powered By Bot Barboza🌪️`
-global.listo = '*Aqui tiene ฅ^•ﻌ•^ฅ*'
-global.namechannel = 'ᑲ᥆𝗍 ᑲᥲrᑲ᥆zᥲ-ᥲі🌪️'
+global.packname = `𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏 /`
+global.author = ' 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕.🥖'
+global.stickpack = '𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏.🥖'
+global.stickauth = '𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕.'
+global.wm = '𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕.'
+global.dev = '𝘗𝘰𝘸𝘦𝘳 𝘉𝘺 𝘔𝘦𝘭𝘥𝘦𝘹𝘻𝘻.🥖'
+global.wait = '𝘌𝘴𝘱𝘦𝘳𝘢 𝘶𝘯 𝘮𝘰𝘮𝘦𝘯𝘵𝘰.\n\n> 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕.🥖'
+global.botname = '𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏.🥖'
+global.textbot = `𝘗𝘰𝘸𝘦𝘳 𝘉𝘺 𝘔𝘦𝘭𝘥𝘦𝘹𝘻𝘻.🥖`
+global.listo = '𝘈𝘲𝘶í 𝘵𝘪𝘦𝘯𝘦.🥖'
+global.namechannel = '𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏.🥖'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
@@ -42,16 +39,16 @@ global.miniurl = fs.readFileSync('./storage/img/miniurl.jpg')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.group = 'https://chat.whatsapp.com/CBuLXuVZcg9FEfCSHiY6b0'
-global.canal = 'https://whatsapp.com/channel/0029Vaua0ZD3gvWjQaIpSy18'
-global.insta = 'https://www.insta.com/https://www.insta.com/sebastian_barboza13'
+global.group = 'https://chat.whatsapp.com/IEOIaUiSZGg9UfZQWQXLth'
+global.canal = 'https://whatsapp.com/channel/0029Va8G1nt90x2n0YHWSX3R'
+global.insta = 'https://www.insta.com/https://www.insta.com/meldexzz'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.catalogo = fs.readFileSync('./storage/img/catalogo.png');
 global.estilo = { key: {  fromMe: false, participant: `0@s.whatsapp.net`, ...(false ? { remoteJid: "5219992095479-1625305606@g.us" } : {}) }, message: { orderMessage: { itemCount : -999999, status: 1, surface : 1, message: packname, orderTitle: 'Bang', thumbnail: catalogo, sellerJid: '0@s.whatsapp.net'}}}
 global.ch = {
-ch1: '120363375378707428@newsletter',
+ch1: '120363190400869019@newsletter',
 }
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
