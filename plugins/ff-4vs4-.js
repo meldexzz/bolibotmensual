@@ -1,11 +1,11 @@
-import fg from 'api-dylux'; 
+
 import fetch from 'node-fetch';
 import axios from 'axios';
 
-let anotados = [];
+let anotados = []; // Lista de usuarios anotados
 
 let handler = async (m, { conn, args, command, usedPrefix }) => {
-    // Rama: Mostrar la lista inicial de anotados
+    // Mostrar la lista inicial de anotados
     if (command === '4vs4' && !args[0]) {
         let lista = `
 𝟒 𝐕𝐄𝐑𝐒𝐔𝐒 𝟒
@@ -23,6 +23,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 ㅤʚ 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄𝐒:
 🥷🏻 ┇ Vacío
 `;
+
         const buttons = [
             {
                 buttonId: `${usedPrefix}anotarse`,
@@ -33,13 +34,18 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 
         await conn.sendMessage(
             m.chat,
-            { text: lista, buttons: buttons },
+            {
+                text: lista,
+                footer: "Presiona el botón para anotarte",
+                buttons: buttons,
+                headerType: 1
+            },
             { quoted: m }
         );
         return;
     }
 
-    // Rama: Al presionar el botón de anotarse
+    // Registrar al usuario al presionar el botón de anotarse
     if (command === 'anotarse') {
         if (anotados.includes(m.sender)) {
             await conn.sendMessage(
@@ -48,7 +54,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
                 { quoted: m }
             );
         } else {
-            anotados.push(m.sender); // Agrega al usuario a la lista de anotados
+            anotados.push(m.sender); // Agregar al usuario a la lista
             let listaActualizada = `
 𝟒 𝐕𝐄𝐑𝐒𝐔𝐒 𝟒
 
@@ -76,7 +82,12 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 
             await conn.sendMessage(
                 m.chat,
-                { text: listaActualizada, buttons: buttons },
+                {
+                    text: listaActualizada,
+                    footer: "Presiona el botón para anotarte",
+                    buttons: buttons,
+                    headerType: 1
+                },
                 { quoted: m }
             );
         }
