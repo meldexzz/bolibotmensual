@@ -8,6 +8,5 @@ let handler = async (m, { conn }) => {
 handler.help = ['chetarki'];
 handler.tags = ['rpg'];
 handler.command = ['chetarki'];
-handler.register = true;
 handler.owner = true
 export default handler;
