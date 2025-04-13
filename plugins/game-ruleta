@@ -54,8 +54,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 }
 handler.tags = ['game']
 handler.help =['ruleta *<cantidad> <color>*']
-handler.command = ['ruleta', 'roulette', 'rt']
-handler.register = true 
+handler.command = ['ruleta', 'roulette', 'rt'] 
 export default handler
 
 function segundosAHMS(segundos) {
