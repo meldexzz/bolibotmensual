@@ -7,7 +7,7 @@ let handler = async (m, { conn }) => {
     const message = `AQUI ESTAN LOS PRECIOS.\n\n> 1 semana de spma = 1k de diamantes\n> 5 días = 800 diamantes\n> 3 días = 500 diamantes `;
 
     if (m.isGroup) {
-        const imageUrl = 'https://f.uguu.se/wGXtlXzM.jpg';
+        const imageUrl = 'https://i.postimg.cc/1zZnB4Vd/IMG-5921.jpg';
 
         await conn.sendMessage(m.chat, { 
             image: { url: imageUrl }, 
