@@ -1,19 +1,6 @@
-import { promises } from 'fs';
-import { join } from 'path';
-import moment from 'moment-timezone';
-import { xpRange } from '../lib/levelling.js';
-
-let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
-    try {
-        let { exp, limit, level, role } = global.db.data.users[m.sender];
-        let { min, xp, max } = xpRange(level, global.multiplier);
-        let name = await conn.getName(m.sender);
-        let fecha = moment.tz('America/Bogota').format('DD/MM/YYYY');
-        let hora = moment.tz('America/Argentina/Buenos_Aires').format('LT');
-        let totalreg = Object.keys(global.db.data.users).length;
-        let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length;
-
-        let menuText = `╔═══════════════╗
+let handler = async (m, { isPrems, conn }) => {
+let img = 'https://i.postimg.cc/1zZnB4Vd/IMG-5921.jpg' 
+let texto = `╔═══════════════╗
 ┇➤ 𝙃𝙊𝙇𝘼, 𝙃𝙐𝙈𝘼𝙉𝙊 
 ┇@${m.sender.split('@')[0]}
 ╚═══════════════╝
@@ -337,17 +324,27 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
 │┊➺ 🎨 .𝘸𝘱𝘮𝘰𝘵𝘰 (💎)
 ╰ ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ ∙ ∙ ∙ ∙
 
- <[ 𝙏𝙚𝙖𝙢 𝘽𝙤𝙡𝙞𝙡𝙡𝙤 𝘽𝙤𝙩.🥖 ]>`;
+ <[ 𝙏𝙚𝙖𝙢 𝘽𝙤𝙡𝙞𝙡𝙡𝙤 𝘽𝙤𝙩.🥖 ]>
+`
 
-       let pp = './Menu2.jpg';
-        await conn.sendFile(m.chat, pp, 'menu.jpg', menuText.trim(), m, false, { mentions: [m.sender] }); // Mencionando al usuario en el mensaje con la imagen
-        m.react('🙌');
-    } catch (e) {
-        m.react(`❌`);
-        throw e;
-    }
-};
-
-handler.command = /^(menu|menú|help|ayuda|comandos|m)$/i;
-handler.exp = 3;
-export default handler;
+const fkontak = {
+        "key": {
+    "participants":"0@s.whatsapp.net",
+                "remoteJid": "status@broadcast",
+                "fromMe": false,
+                "id": "Halo"
+        },
+        "message": {
+                "contactMessage": {
+                        "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                }
+        },
+        "participant": "0@s.whatsapp.net"
+}
+await conn.sendFile(m.chat, img, 'img.jpg', texto, fkontak)
+global.db.data.users[m.sender].lastcofre = new Date * 1
+}
+handler.help = ['menu']
+handler.tags = ['main'] 
+handler.command = ['menu', 'help'] 
+export default handler
