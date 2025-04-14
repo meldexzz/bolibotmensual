@@ -9,7 +9,7 @@ const handler = async (m, { conn, args }) => {
         text = m.quoted.text;
     } else throw "🚩 Ingresa un texto junto al comando.";
    if (!text) return conn.reply(m.chat, '🚩 Ingresa un texto junto al comando.', m)
-   if (text.length > 30) return conn.reply(m.chat, 'Solo se permiten 30 caracteres como Máximo.', m, rcanal)
+   if (text.length > 30) return conn.reply(m.chat, 'Solo se permiten 30 caracteres como Máximo.', m)
 
     const randomColor = ['#000000'];
 
