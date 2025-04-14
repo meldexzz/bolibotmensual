@@ -12,7 +12,7 @@ let handler = async (m, { conn, command, args }) => {
 ││✯ *Costo* : -${xpperlimit * count} 💫 XP
 │╰────────────────···
 ╰───────────═┅═──────────`, m, rcanal)
-  } else conn.reply(m.chat, `🚩 Lo siento, no tienes suficientes *⭐ XP* para comprar *${count} ❇️ Estrellas.*`, m, rcanal)
+  } else conn.reply(m.chat, `🚩 Lo siento, no tienes suficientes *⭐ XP* para comprar *${count} ❇️ Estrellas.*`, m)
 }
 handler.help = ['buycoins', 'buyall']
 handler.tags = ['fun']
