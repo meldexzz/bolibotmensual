@@ -1,41 +1,41 @@
-let handler = async (m, { isPrems, conn }) => {
-let img = 'https://i.postimg.cc/1zZnB4Vd/IMG-5921.jpg' 
-let texto = `╔═══════════════╗
+handler = async (m, { isPrems, conn }) => {
+Let img = ‘https://i.postimg.cc/1zZnB4Vd/IMG-5921.jpg’ 
+Let texto = `╔═══════════════╗
 ┇➤ 𝙃𝙊𝙇𝘼, 𝙃𝙐𝙈𝘼𝙉𝙊 
-┇@${m.sender.split('@')[0]}
+┇@${m.sender.split(‘@’)[0]}
 ╚═══════════════╝
 ╔═══════════════╗
 ┇ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕 / 𝙅𝙊𝙎𝙎 🥖
-╚═══════════════╝
-
-▸▸ 𝙂𝙀𝙉𝙀𝙍𝘼𝙇 ◂◂
-│┊➺ 🌐 .messi
-│┊➺ 🌐 .cr7
-│┊➺ 🌐 .infoanime
-│┊➺ 🌐 .acosar @usuario
-│┊➺ 🌐 .abrazar @usuario
-│┊➺ 🌐 .llorar @usuario
-│┊➺ 🌐 .awoo @usuario
-│┊➺ 🌐 .besar @usuario
-│┊➺ 🌐 .lamer @usuario
-│┊➺ 🌐 .acariciar @usuario
-│┊➺ 🌐 .engreído @usuario
-│┊➺ 🌐 .golpear @usuario
-│┊➺ 🌐 .lanzar @usuario
-│┊➺ 🌐 .ruborizarse @usuario
-│┊➺ 🌐 .sonreír @usuario
-│┊➺ 🌐 .saludar @usuario
-│┊➺ 🌐 .chocar @usuario
-│┊➺ 🌐 .sostener @usuario
-│┊➺ 🌐 .morder @usuario
-│┊➺ 🌐 .glomp @usuario
-│┊➺ 🌐 .abofetear @usuario
-│┊➺ 🌐 .matar @usuario
-│┊➺ 🌐 .feliz @usuario
-│┊➺ 🌐 .guiñar @usuario
-│┊➺ 🌐 .tocar @usuario
-│┊➺ 🌐 .bailar @usuario
-│┊➺ 🌐 .cringe @usuario
+╚══════════════
+ ╭╍╍╍╍❖【 🧧 Anime 🎐】
+┋💎›【 .messi
+┋💎›【 .cr7
+┋💎›【 .infoanime
+┋💎›【 .acosar @usuario
+┋💎›【 .abrazar @usuario
+┋💎›【 .llorar @usuario
+┋💎›【 .abrazar @usuario
+┋💎›【 .awoo @usuario
+┋💎›【 .besar @usuario
+┋💎›【 .lamer @usuario
+┋💎›【 .acariciar @usuario
+┋💎›【 .engreído @usuario
+┋💎›【 .golpear @usuario
+┋💎›【 .lanzar @usuario
+┋💎›【 .ruborizarse @usuario
+┋💎›【 .sonreír @usuario
+┋💎›【 .saludar @usuario
+┋💎›【 .chocar @usuario
+┋💎›【 .sostener @usuario
+┋💎›【 .morder @usuario
+┋💎›【 .glomp @usuario
+┋💎›【 .abofetear @usuario
+┋💎›【 .matar @usuario
+┋💎›【 .feliz @usuario
+┋💎›【 .guiñar @usuario
+┋💎›【 .tocar @usuario
+┋💎›【 .bailar @usuario
+┋💎›【 .cringe @usuario
 ╰ ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ ∙ ∙ ∙ ∙
 ▸▸ 𝙄𝙉𝙁𝙊 ◂◂
 │┊➺ 👨🏻‍💻 .precios1
@@ -74,8 +74,10 @@ let texto = `╔═══════════════╗
 │┊➺ 🎮 .apostar <cantidad>
 │┊➺ 🎮 .trivia
 ╰ ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ ∙ ∙ ∙ ∙
-▸▸ ⚙️ 𝙎𝙐𝘽 𝘽𝙊𝙏𝙎 ◂◂
-(No se incluyen comandos específicos aquí)
+▸▸ ⚙️ 𝙎𝙐𝘽 𝘽𝙊𝙏𝙎 ◂
+│┊➺ 🤖 .code
+│┊➺ 🤖 . bots 
+│┊➺ 🤖 .code
 ╰ ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ ∙ ∙ ∙ ∙
 ▸▸ 🥇 𝙍𝙋𝙂 ◂◂
 │┊➺ 🛡️ .abrircofre
@@ -217,7 +219,7 @@ let texto = `╔═══════════════╗
 │┊➺ 🛠️ .tomp3
 ╰ ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ ∙ ∙ ∙ ∙
 ▸▸ 🎊 𝙁𝙐𝙉 ◂◂
-│┊➺ 🎉 .coffe/cafe @tag
+│┊➺ 🎉 .coffe/café @tag
 │┊➺ 🎉 .dado
 │┊➺ 🎉 .love
 │┊➺ 🎉 .formarnv
@@ -251,8 +253,45 @@ let texto = `╔═══════════════╗
 │┊➺ 🎉 .perra
 │┊➺ 🎉 .personalidad <nombre>
 │┊➺ 🎉 .piropo
-│┊➺ 🎉 .pregunta <texto>
+🎉 .pregunta <texto>
 ╰ ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ ∙ ∙ ∙ ∙
+▸▸ Logos ◂◂
+│┊➺.logocorazon
+│┊➺ .logochristmas
+ │┊➺.logopareja
+│┊➺.logoglitch
+│┊➺ . logovideointro 
+│┊➺.logogaming
+│┊➺ .logosolitario
+│┊➺ .logodragonball
+│┊➺ .logoneon
+│┊➺ .logogatito
+│┊➺.logochicagamer
+│┊➺.logonaruto
+│┊➺ .logofuturista
+│┊➺ .logonube
+│┊➺.logoangel
+│┊➺.logomurcielago
+│┊➺.logocielo
+│┊➺.logograffiti3d
+│┊➺.logomatrix
+│┊➺.logohorror
+│┊➺.logoalas
+│┊➺.logoarmy
+│┊➺.logopubg
+│┊➺.logopubgfem
+│┊➺.logolol
+│┊➺.logoamongus
+│┊➺.logovideopubg
+│┊➺.logovideotiger
+│┊➺.logovideointro
+│┊➺.logovideogaming
+│┊➺.logoguerrero
+│┊➺ .logoportadaplayer
+│┊➺.logoportadaff
+│┊➺.logoportadapubg
+│┊➺.logoportadacounter
+
 ▸▸ 💬 𝙎𝙐𝙋𝙀𝙍𝙑𝙄𝙎𝙊𝙍𝙀𝙎 ◂◂
 │┊➺ 📝 .addtag
 │┊➺ 📝 .alltags
@@ -267,24 +306,25 @@ let texto = `╔═══════════════╗
  <[ 𝙏𝙚𝙖𝙢 𝘽𝙤𝙡𝙞𝙡𝙡𝙤 𝘽𝙤𝙩.🥖 ]>
 `
 
-const fkontak = {
-        "key": {
-    "participants":"0@s.whatsapp.net",
-                "remoteJid": "status@broadcast",
-                "fromMe": false,
-                "id": "Halo"
+Const fkontak = {
+        “key”: {
+    “participants”:0@s.whatsapp.net,
+                “remoteJid”: “status@broadcast”,
+                “fromMe”: false,
+                “id”: “Halo”
         },
-        "message": {
-                "contactMessage": {
-                        "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+        “message”: {
+                “contactMessage”: {
+                        “vcard”: `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split(‘@’)[0]}:${m.sender.split(‘@’)[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
                 }
         },
-        "participant": "0@s.whatsapp.net"
+        “participant”: 0@s.whatsapp.net
 }
-await conn.sendFile(m.chat, img, 'img.jpg', texto, fkontak)
-global.db.data.users[m.sender].lastcofre = new Date * 1
+Await conn.sendFile(m.chat, img, ‘img.jpg’, texto, fkontak)
+Global.db.data.users[m.sender].lastcofre = new Date * 1
 }
-handler.help = ['menu']
-handler.tags = ['main'] 
-handler.command = ['menu', 'help'] 
-export default handler
+Handler.help = [‘menu’]
+Handler.tags = [‘main’] 
+Handler.command = [‘menu’, ‘help’] 
+Export default handler
+
