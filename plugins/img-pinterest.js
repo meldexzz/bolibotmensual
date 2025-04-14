@@ -3,7 +3,7 @@ import axios from 'axios';
 const handler = async (m, { conn, text }) => {
     try {
         if (!text) {
-            await conn.sendMessage(m.chat, { text: '✎ Por favor proporciona un término de búsqueda.' }, { quoted: m, rcanal });
+            await conn.sendMessage(m.chat, { text: '✎ Por favor proporciona un término de búsqueda.' }, { quoted: m });
             return;
         }
 
