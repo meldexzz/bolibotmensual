@@ -38,7 +38,7 @@ let handler = async (m, { conn, command, args, usedPrefix }) => {
                     teks += `_${g.title}_\n_${g.link}_\n_${g.snippet}_\n\n┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n\n`;
                 }
                 const ss = `https://image.thum.io/get/fullpage/${url}`;
-                conn.sendFile(m.chat, ss, 'error.png', teks, fkontak, false, rcanal);
+                conn.sendFile(m.chat, ss, 'error.png', teks, fkontak, false);
             });
             m.react("✅");
             handler.limit = 1;         
