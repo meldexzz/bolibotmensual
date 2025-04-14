@@ -15,7 +15,7 @@ let handler = async (m, { conn, text }) => {
     if (Buffer.isBuffer(e)) stiker = e
   } finally {
     if (stiker) conn.sendFile(m.chat, stiker, 'wm.webp', '', m)
-    else return conn.reply(m.chat, `🚩 Responde a a un *Sticker.*`, m, rcanal)
+    else return conn.reply(m.chat, `🚩 Responde a a un *Sticker.*`, m)
   }
 }
 handler.help = ['wm *<nombre>|<autor>*']
