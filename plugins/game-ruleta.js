@@ -7,13 +7,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
 
   if (cooldowns[m.sender] && Date.now() - cooldowns[m.sender] < tiempoEspera * 1000) {
     let tiempoRestante = segundosAHMS(Math.ceil((cooldowns[m.sender] + tiempoEspera * 1000 - Date.now()) / 1000))
-    conn.reply(m.chat, `🚩 Ya has iniciado una apuesta recientemente, espera *⏱ ${tiempoRestante}* para apostar nuevamente`, m, rcanal)
+    conn.reply(m.chat, `🚩 Ya has iniciado una apuesta recientemente, espera *⏱ ${tiempoRestante}* para apostar nuevamente`, m)
     return
   }
 
   cooldowns[m.sender] = Date.now()
 
-  if (!text) return conn.reply(m.chat, `🚩 Debes ingresar una cantidad de *❇️ Eris* y apostar a un color, por ejemplo: *${usedPrefix + command} 20 black*`, m, rcanal)
+  if (!text) return conn.reply(m.chat, `🚩 Debes ingresar una cantidad de *❇️ Eris* y apostar a un color, por ejemplo: *${usedPrefix + command} 20 black*`,)
 
   let args = text.trim().split(" ")
   if (args.length !== 2) return conn.reply(m.chat, `🚩 Formato incorrecto. Debes ingresar una cantidad de *❇️ Eris* y apostar a un color, por ejemplo: *${usedPrefix + command} 20 black*`, m, rcanal)
