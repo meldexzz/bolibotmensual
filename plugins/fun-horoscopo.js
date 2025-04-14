@@ -5,10 +5,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         return m.reply(`❗ Por favor, ingresa tu signo zodiacal.\n\nEjemplo: ${usedPrefix + command} aries`);
     }
 
-    // Convertir el signo ingresado a minúsculas para evitar problemas de formato
+  
     let signo = args[0].toLowerCase();
 
-    // Datos de horóscopos (puedes extenderlo con más detalles para cada signo)
     let horoscopos = {
         aries: "♈ *Aries*\nTu energía y entusiasmo te llevarán lejos hoy. ¡Confía en tus capacidades y persigue tus metas con valentía!",
         tauro: "♉ *Tauro*\nLa paciencia será tu mejor aliada. Mantén la calma y encontrarás soluciones prácticas a los desafíos que enfrentas.",
@@ -24,13 +23,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         piscis: "♓ *Piscis*\nBusca momentos de conexión espiritual. Tu sensibilidad será una fortaleza en tus relaciones."
     };
 
-    // Verificar si el signo ingresado existe
     let horoscopo = horoscopos[signo];
     if (!horoscopo) {
         return m.reply("❗ Signo zodiacal no válido. Por favor, ingresa un signo como: aries, tauro, geminis, etc.");
     }
-
-    // Enviar el horóscopo correspondiente
     await conn.sendMessage(m.chat, { text: horoscopo }, { quoted: m });
 };
 
