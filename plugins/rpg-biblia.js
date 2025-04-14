@@ -22,7 +22,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
     txt += `  *» Traducción* : ${json.translation}\n`;
     txt += `  *» Contenido* : ${json.text.trim()}\n`;
 
-    await conn.reply(m.chat, txt, m, rcanal);
+    await conn.reply(m.chat, txt, m);
     await m.react('✅');
   } catch (error) {
     console.error(error);
