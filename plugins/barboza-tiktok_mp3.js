@@ -9,7 +9,7 @@ import fetch from 'node-fetch';
 
 let handler = async(m, { conn, args, usedPrefix, command }) => {
 
-if (!args[0]) return m.reply(`🎩 Ingrese Una Url De Tiktok\n*Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMh3KL31o/`);
+if (!args[0]) return m.reply(`> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘦𝘭 𝘭𝘪𝘯𝘬 𝘥𝘦𝘭 𝘵𝘪𝘬𝘵𝘰𝘬.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘵𝘪𝘬𝘵𝘰𝘬𝘮𝘱3 𝘩𝘵𝘵𝘱𝘴://𝘸𝘸𝘸.𝘵𝘪𝘬𝘵𝘰𝘬.𝘤𝘰𝘮/Bolillosbailarines.🥖`);
 
 try {
 let api = `https://eliasar-yt-api.vercel.app/api/search/tiktok?query=${args[0]}`;
