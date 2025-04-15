@@ -22,7 +22,7 @@ const handler = async (m, {text, usedPrefix, command, conn}) => {
   const ads = `*${tradutor.texto3[2]}* ${tradutor.texto3[3]}\n*${tradutor.texto3[4]}* https://block-this.com/block-this-latest.apk\n\n≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣≣\n\n`;
   conn.sendMessage(m.chat, {image: {url: img}, caption: ads + res}, {quoted: m});
  } catch {
-   return conn.sendMessage(m.chat, {text: '*[❗] Error, no se obtuvieron resultados.'}, {quoted: m});   
+   return conn.sendMessage(m.chat, {text: '> 𝘌𝘳𝘳𝘰𝘳, 𝘯𝘰 𝘴𝘦 𝘰𝘣𝘵𝘶𝘷𝘪𝘦𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴.🥖'}, {quoted: m});   
  }    
 };   
 handler.command = ['cuevana', 'pelisplus'];
