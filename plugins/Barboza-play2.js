@@ -5,17 +5,17 @@ import axios from "axios"
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
-      return conn.reply(m.chat, `❀ Por favor, ingresa el nombre de la música a descargar.`, m)
+      return conn.reply(m.chat, `> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘦𝘭 𝘯𝘰𝘮𝘣𝘳𝘦 𝘥𝘦 𝘭𝘢 𝘤𝘢𝘯𝘤𝘪ó𝘯.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘱𝘭𝘢𝘺 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴 𝘳𝘦𝘣𝘦𝘭𝘥𝘦𝘴.🥖`, m)
     }
 
     const search = await yts(text)
     if (!search.all || search.all.length === 0) {
-      return m.reply('✧ No se encontraron resultados para tu búsqueda.')
+      return m.reply('𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴.🥖')
     }
 
     const videoInfo = search.all[0]
     if (!videoInfo) {
-      return m.reply('✧ No se pudo obtener información del video.')
+      return m.reply('𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴.🥖')
     }
 
     const { title, thumbnail, timestamp, views, ago, url, author } = videoInfo
@@ -53,11 +53,11 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         const resulta = api.result
         const result = resulta.download.url
 
-        if (!result) throw new Error('⚠ El enlace de audio no se generó correctamente.')
+        if (!result) throw new Error('𝘌𝘯𝘭𝘢𝘤𝘦 𝘯𝘰 𝘨𝘦𝘯𝘦𝘳𝘢𝘥𝘰 𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘢𝘮𝘦𝘯𝘵𝘦.🥖')
 
         await conn.sendMessage(m.chat, { audio: { url: result }, fileName: `${api.result.title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
       } catch (e) {
-        return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente más tarde.', m)
+        return conn.reply(m.chat, '> 𝘖𝘤𝘶𝘳𝘳𝘪ó 𝘶𝘯 𝘦𝘳𝘳𝘰𝘳, 𝘳𝘢𝘻ó𝘯:\n\n𝘈𝘳𝘤𝘩𝘪𝘷𝘰 𝘮𝘶𝘺 𝘱𝘦𝘴𝘢𝘥𝘰 𝘰 𝘴𝘪𝘯 𝘦𝘹𝘪𝘴𝘵𝘦𝘯𝘤𝘪𝘢𝘴.🥖', m)
       }
     } else if (command === 'play2' || command === 'ytv' || command === 'ytmp4') {
       try {
@@ -66,18 +66,18 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         const resultad = json.result
         const resultado = resultad.download.url
 
-        if (!resultad || !resultado) throw new Error('⚠ El enlace de video no se generó correctamente.')
+        if (!resultad || !resultado) throw new Error('𝘌𝘯𝘭𝘢𝘤𝘦 𝘯𝘰 𝘨𝘦𝘯𝘦𝘳𝘢𝘥𝘰 𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘢𝘮𝘦𝘯𝘵𝘦.🥖')
 
         await conn.sendMessage(m.chat, { video: { url: resultado }, fileName: resultad.title, mimetype: 'video/mp4', caption: title }, { quoted: m })
       } catch (e) {
-        return conn.reply(m.chat, '⚠︎ No se pudo enviar el video. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente más tarde.', m)
+        return conn.reply(m.chat, '> 𝘖𝘤𝘶𝘳𝘳𝘪ó 𝘶𝘯 𝘦𝘳𝘳𝘰𝘳, 𝘳𝘢𝘻ó𝘯:\n\n𝘈𝘳𝘤𝘩𝘪𝘷𝘰 𝘮𝘶𝘺 𝘱𝘦𝘴𝘢𝘥𝘰 𝘰 𝘴𝘪𝘯 𝘦𝘹𝘪𝘴𝘵𝘦𝘯𝘤𝘪𝘢𝘴.🥖', m)
       }
     } else {
-      return conn.reply(m.chat, '✧︎ Comando no reconocido.', m)
+      return conn.reply(m.chat, '𝘊𝘰𝘮𝘢𝘯𝘥𝘰 𝘯𝘰 𝘳𝘦𝘤𝘰𝘯𝘰𝘤𝘪𝘥𝘰.🥖', m)
     }
 
   } catch (error) {
-    return m.reply(`⚠︎ Ocurrió un error: ${error}`)
+    return m.reply(`𝘖𝘤𝘶𝘳𝘳𝘪ó 𝘶𝘯 𝘦𝘳𝘳𝘰𝘳, 𝘳𝘢𝘻ó𝘯: ${error}`)
   }
 }
 
