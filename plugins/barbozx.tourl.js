@@ -7,21 +7,21 @@ let handler = async m => {
     const q = m.quoted || m
     const mime = q.mediaType || ""    
     if (!/image|video|audio|sticker|document/.test(mime)) 
-      throw "```[ 📤 ] Responde a una imagen / vídeo / audio ( normal o documento )```"
+      throw "> 𝘙𝘦𝘴𝘱𝘰𝘯𝘥𝘦 𝘢 𝘶𝘯𝘢 𝘪𝘮𝘢𝘨𝘦𝘯 / 𝘷í𝘥𝘦𝘰 / 𝘢𝘶𝘥𝘪𝘰 ( 𝘯𝘰𝘳𝘮𝘢𝘭 𝘰 𝘥𝘰𝘤𝘶𝘮𝘦𝘯𝘵𝘰 ).🥖"
     const media = await q.download(true)
     const fileSizeInBytes = fs.statSync(media).size    
     if (fileSizeInBytes === 0) {
-      await m.reply("```[ ❗ ] El archivo es demasiado ligero```")
+      await m.reply("> 𝘈𝘳𝘤𝘩𝘪𝘷𝘰 𝘥𝘦𝘮𝘢𝘴𝘪𝘢𝘥𝘰 𝘭𝘪𝘨𝘦𝘳𝘰.🥖")
       await fs.promises.unlink(media)
       return
     }   
     if (fileSizeInBytes > 1073741824) {
-      await m.reply("```[ 📌 ] El archivo supera 1GB```")
+      await m.reply("> 𝘌𝘭 𝘢𝘳𝘤𝘩𝘪𝘷𝘰 𝘴𝘶𝘱𝘦𝘳𝘢 1𝘎𝘉.🥖")
       await fs.promises.unlink(media)
       return
     }    
     const { files } = await uploadUguu(media)
-    const caption = `\`\`\`[ ⚡ ] Aquí tienes la URL de tu archivo:\n${files[0]?.url}\`\`\``
+    const caption = `> 𝘈𝘲𝘶í 𝘵𝘪𝘦𝘯𝘦𝘴 𝘭𝘢 𝘜𝘙𝘓 𝘥𝘦 𝘵𝘶 𝘢𝘳𝘤𝘩𝘪𝘷𝘰:\n${files[0]?.url} 🥖`
     await m.reply(caption)
   } catch (e) {
     await m.reply(`${e}`)
