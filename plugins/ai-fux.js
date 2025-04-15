@@ -5,7 +5,7 @@
 import axios from "axios";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(m.chat,`🌸 Ejemplo: ${usedPrefix}${command} paisaje hermoso`, m, fake)
+  if (!text) return conn.reply(m.chat,`> 𝘍𝘰𝘳𝘮𝘢 𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘢 𝘥𝘦 𝘶𝘴𝘢𝘳 𝘦𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰: \n\n.𝘧𝘭𝘶𝘹 𝘧𝘭𝘰𝘳𝘦𝘴.🥖`, m, fake)
   await m.react('🕓')
 
   try {
@@ -16,18 +16,18 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         m.chat,
         {
           image: { url: result.imageLink },
-          caption: `*\`Resultados De:\`* ${text}`,
+          caption: `> 𝘙𝘌𝘚𝘜𝘓𝘛𝘈𝘋𝘖𝘚 𝘋𝘌: \`* ${text}`,
         },
         { quoted: m }
       );
     } else {
-      throw new Error("No se pudo crear la imagen. Intentar otra vez.");
+      throw new Error("𝘕𝘰 𝘴𝘦 𝘱𝘶𝘥𝘰 𝘨𝘦𝘯𝘦𝘳𝘢𝘳 𝘭𝘢 𝘪𝘮𝘢𝘨𝘦𝘯, 𝘪𝘯𝘵𝘦𝘯𝘵𝘢 𝘯𝘶𝘦𝘷𝘢𝘮𝘦𝘯𝘵𝘦.🥖");
     }
   } catch (error) {
     console.error(error);
     conn.reply(
       m.chat,
-      "Se produjo un error al crear la imagen.",
+      "𝘕𝘰 𝘴𝘦 𝘱𝘶𝘥𝘰 𝘨𝘦𝘯𝘦𝘳𝘢𝘳 𝘭𝘢 𝘪𝘮𝘢𝘨𝘦𝘯, 𝘪𝘯𝘵𝘦𝘯𝘵𝘢 𝘯𝘶𝘦𝘷𝘢𝘮𝘦𝘯𝘵𝘦.🥖",
       m
     );
   }
