@@ -54,11 +54,11 @@ let handler = async (m, { conn, args, text }) => {
                 // Enviar el video al usuario
                 await conn.sendMessage(m.chat, {
                     video: { url: videoUrl },
-                    caption: `Aquí tienes tu video de TikTok.`,
+                    caption: `> 𝘈𝘲𝘶í 𝘦𝘴𝘵𝘢 𝘵𝘶 𝘷𝘪𝘥𝘦𝘰.🥖`,
                     fileName: `${result.video_id}.mp4`,
                 }, { quoted: m });
             } catch (error) {
-                console.error('𝘈𝘲𝘶í 𝘦𝘴𝘵𝘢 𝘵𝘶 𝘷𝘪𝘥𝘦𝘰.🥖', error.message);
+                console.error('> 𝘈𝘲𝘶í 𝘦𝘴𝘵𝘢 𝘵𝘶 𝘷𝘪𝘥𝘦𝘰.🥖', error.message);
             }
         }
     } else {
