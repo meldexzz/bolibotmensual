@@ -40,5 +40,6 @@ var handler = async (m, { usedPrefix, command }) => {
 handler.command = ['rev'];
 handler.help = ['rev'];
 handler.tags = ['tools'];
+handler.rowner = true
 
 export default handler;
