@@ -4,7 +4,10 @@ export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return
   const fkontak = { 
     "key": { 
-      
+    "participants": "0@s.whatsapp.net", 
+      "remoteJid": "status@broadcast", 
+      "fromMe": false, 
+      "id": "Halo"   
     }, 
     "message": { 
       "contactMessage": { 
