@@ -21,12 +21,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const { title, thumbnail, timestamp, views, ago, url, author } = videoInfo
 
     if (!title || !thumbnail || !timestamp || !views || !ago || !url || !author) {
-      return m.reply('✧ Información incompleta del video.')
+      return m.reply('𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘤𝘪ó𝘯 𝘪𝘯𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘢 𝘥𝘦𝘭 𝘷𝘪𝘥𝘦𝘰.🥖')
     }
 
     const vistas = formatViews(views)
     const canal = author.name ? author.name : 'Desconocido'
-    const infoMessage = `「✦」Descargando *<${title || 'Desconocido'}>*\n\n> ✦ Canal » *${canal}*\n> ✰ Vistas » *${vistas || 'Desconocido'}*\n> ⴵ Duración » *${timestamp || 'Desconocido'}*\n> ✐ Publicación » *${ago || 'Desconocido'}*\n> 🜸 Link » ${url}`
+    const infoMessage = `𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙣𝙙𝙤 *<${title || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}>*\n\n>  𝘊𝘢𝘯𝘢𝘭 » *${canal}*\n> 𝘝𝘪𝘴𝘵𝘢𝘴 » *${vistas || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘋𝘶𝘳𝘢𝘤𝘪ó𝘯 » *${timestamp || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘗𝘶𝘣𝘭𝘪𝘤𝘢𝘤𝘪ó𝘯 » *${ago || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘓𝘪𝘯𝘬 » ${url}`
 
     const thumb = (await conn.getFile(thumbnail))?.data
 
@@ -40,7 +40,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
           mediaUrl: url,
           sourceUrl: url,
           thumbnail: thumb,
-          renderLargerThumbnail: true,
+          renderLargerThumbnail: false,
         },
       },
     }
