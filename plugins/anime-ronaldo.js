@@ -10,7 +10,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     const buttons = [
         {
             buttonId: `${usedPrefix + command}`,
-            buttonText: { displayText: "⚽ Ver más" },
+            buttonText: { displayText: "𝘝𝘦𝘳 𝘮𝘢𝘴 𝘥𝘦 𝘔𝘳. 𝘊𝘩𝘢𝘮𝘱𝘪𝘰𝘯𝘴.🏆" },
             type: 1
         }
     ];
@@ -19,7 +19,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         m.chat,
         {
             image: { url: ronaldo },
-            caption: "*CR7*",
+            caption: "> ¡𝘌𝘓 𝘉𝘐𝘊𝘏𝘖𝘖𝘖𝘖𝘖𝘖𝘖!.🏆",
             buttons: buttons,
             viewOnce: true
         },
