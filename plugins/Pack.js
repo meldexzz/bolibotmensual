@@ -3,7 +3,7 @@ import path from 'path';
 
 let handler = async (m, { conn }) => {
 
-    if (!global.db.data.chats[m.chat].nsfw) return m.reply(`El grupo no admite contenido *NSFW.*`);
+    if (!global.db.data.chats[m.chat].nsfw) return m.reply(`> 𝘌𝘭 𝘨𝘳𝘶𝘱𝘰 𝘯𝘰 𝘢𝘥𝘮𝘪𝘵𝘦 𝘤𝘰𝘯𝘵𝘦𝘯𝘪𝘥𝘰 𝘕𝘚𝘍𝘞.\n\nS𝘪 𝘥𝘦𝘴𝘦𝘢𝘴 𝘶𝘴𝘢𝘳 𝘭𝘢 𝘧𝘶𝘯𝘤𝘪𝘰𝘯 𝘢𝘤𝘵𝘪𝘷𝘢𝘭𝘢 𝘤𝘰𝘯 .𝘦𝘯𝘢𝘣𝘭𝘦 𝘕𝘚𝘍𝘞. 🥖 `);
 
     m.react('🔥');
 
