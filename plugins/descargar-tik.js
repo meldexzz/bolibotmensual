@@ -2,9 +2,9 @@ import fetch from 'node-fetch';
 
 // Mensajes predefinidos
 const mssg = {
-    noText: '❗️ *Por favor, ingresa un término para buscar en TikTok.*',
-    noResults: '❗️ No se encontraron resultados para tu búsqueda. Intenta con otro término. 💎🔥',
-    error: '❗️ Ocurrió un error al intentar procesar la búsqueda. 🧐',
+    noText: '> 𝘗𝘰𝘳 𝘧𝘢𝘷𝘰𝘳, 𝘪𝘯𝘨𝘳𝘦𝘴𝘢 𝘶𝘯 𝘵é𝘳𝘮𝘪𝘯𝘰 𝘱𝘢𝘳𝘢 𝘣𝘶𝘴𝘤𝘢𝘳 𝘦𝘯 𝘛𝘪𝘬𝘛𝘰𝘬. 🥖',
+    noResults: '> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴 𝘱𝘢𝘳𝘢 𝘵𝘶 𝘣ú𝘴𝘲𝘶𝘦𝘥𝘢. 𝘐𝘯𝘵𝘦𝘯𝘵𝘢 𝘤𝘰𝘯 𝘰𝘵𝘳𝘰 𝘵é𝘳𝘮𝘪𝘯𝘰. 🥖',
+    error: '> 𝘖𝘤𝘶𝘳𝘳𝘪ó 𝘶𝘯 𝘦𝘳𝘳𝘰𝘳 𝘢𝘭 𝘪𝘯𝘵𝘦𝘯𝘵𝘢𝘳 𝘱𝘳𝘰𝘤𝘦𝘴𝘢𝘳 𝘭𝘢 𝘣ú𝘴𝘲𝘶𝘦𝘥𝘢. 🧐',
 };
 
 // Función para enviar respuestas rápidas
@@ -38,13 +38,13 @@ let handler = async (m, { conn, args, text }) => {
     }
 
     // Mensaje de búsqueda
-    reply(`🔍 *Buscando en TikTok:* "${text}"...\n\n>_*Por favor, espere..._*`, conn, m);
+    reply(`> 𝘉𝘶𝘴𝘤𝘢𝘯𝘥𝘰 𝘦𝘯 𝘵𝘪𝘬𝘵𝘰𝘬: "_${text}_"...\n\n> 𝘗𝘰𝘳 𝘧𝘢𝘷𝘰𝘳, 𝘦𝘴𝘱𝘦𝘳𝘦.🥖`, conn, m);
 
     // Buscar en TikTok
     const searchResults = await searchTikTok(text);
 
     if (searchResults) {
-        reply(`✅ *Se encontraron ${searchResults.length} resultados. Aquí están los videos:*`, conn, m);
+        reply(`> 𝘚𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯: ${searchResults.length} 𝘙𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴. 𝘈𝘲𝘶í 𝘦𝘴𝘵á𝘯 𝘭𝘰𝘴 𝘷𝘪𝘥𝘦𝘰𝘴.🥖`, conn, m);
 
         // Enviar los primeros 10 videos encontrados
         for (const result of searchResults) {
@@ -58,7 +58,7 @@ let handler = async (m, { conn, args, text }) => {
                     fileName: `${result.video_id}.mp4`,
                 }, { quoted: m });
             } catch (error) {
-                console.error('Error al enviar video:', error.message);
+                console.error('𝘈𝘲𝘶í 𝘦𝘴𝘵𝘢 𝘵𝘶 𝘷𝘪𝘥𝘦𝘰.🥖', error.message);
             }
         }
     } else {
