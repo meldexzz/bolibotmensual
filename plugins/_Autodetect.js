@@ -28,11 +28,11 @@ END:VCARD`
 
   
   let nombre = `
-╔═【 🚀 Bolillo-BOT ALERTA 】═╗
-║ *${usuario}* 
-║ ✨ Nuevo nombre detectado:
-║   » *<${m.messageStubParameters[0]}>*
-╚════════════════════════╝`
+> ¡ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊-𝘼𝙇𝙀𝙍𝙏𝘼 !.🥖
+▸ *_${usuario}_* 
+▸ 𝘕𝘶𝘦𝘷𝘰 𝘯𝘰𝘮𝘣𝘳𝘦 𝘥𝘦𝘵𝘦𝘤𝘵𝘢𝘥𝘰.
+▸ *_<${m.messageStubParameters[0]}>_*
+`
   
   let foto = `
 ╔═【 🪐 Bolillo-BOT OBSERVA 】═╗
