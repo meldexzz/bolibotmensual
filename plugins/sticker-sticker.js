@@ -14,11 +14,11 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (/webp|image|video/g.test(mime)) {
       if (/video/g.test(mime)) 
         if ((q.msg || q).seconds > 8) 
-          return m.reply(`☁️ *¡El video no puede durar más de 8 segundos!*`);
+          return m.reply(`𝘓𝘪𝘮𝘪𝘵𝘦 𝘮𝘢𝘹𝘪𝘮𝘰 𝘥𝘦 𝘷𝘪𝘥𝘦𝘰: 8 𝘴𝘦𝘨𝘶𝘯𝘥𝘰𝘴. 🥖`);
 
       let img = await q.download?.();
       if (!img) 
-        return conn.reply(m.chat, `☃️ *_¿Y el video? Intenta enviar primero imagen/video/gif y luego responde con el comando._*`, m);
+        return conn.reply(m.chat, `¿𝘠 𝘦𝘭 𝘷𝘪𝘥𝘦𝘰? 𝘐𝘯𝘵𝘦𝘯𝘵𝘢 𝘦𝘯𝘷𝘪𝘢𝘳 𝘱𝘳𝘪𝘮𝘦𝘳𝘰 𝘪𝘮𝘢𝘨𝘦𝘯/𝘷𝘪𝘥𝘦𝘰/𝘨𝘪𝘧 𝘺 𝘭𝘶𝘦𝘨𝘰 𝘳𝘦𝘴𝘱𝘰𝘯𝘥𝘦 𝘤𝘰𝘯 𝘦𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰. 🥖`, m);
 
       let out;
       try {
@@ -69,7 +69,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         { quoted: m }
       );
     } else {
-      return conn.reply(m.chat, '⚡ *_¿Y el video? Intenta enviar primero imagen/video/gif y luego responde con el comando._*', m);
+      return conn.reply(m.chat, '¿𝘠 𝘦𝘭 𝘷𝘪𝘥𝘦𝘰? 𝘐𝘯𝘵𝘦𝘯𝘵𝘢 𝘦𝘯𝘷𝘪𝘢𝘳 𝘱𝘳𝘪𝘮𝘦𝘳𝘰 𝘪𝘮𝘢𝘨𝘦𝘯/𝘷𝘪𝘥𝘦𝘰/𝘨𝘪𝘧 𝘺 𝘭𝘶𝘦𝘨𝘰 𝘳𝘦𝘴𝘱𝘰𝘯𝘥𝘦 𝘤𝘰𝘯 𝘦𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰. 🥖', m);
     }
   }
 };
