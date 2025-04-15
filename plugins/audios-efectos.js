@@ -45,7 +45,7 @@ let handler = async (m, { conn, args, __dirname, usedPrefix, command }) => {
                 })
                 await m.react('✅')
             })
-        } else return conn.reply(m.chat, `🧑‍💻 RESPONDA AL AUDIO O NOTA DE VOZ 🎵*`, m, rcanal)
+        } else return conn.reply(m.chat, `> 𝘙𝘦𝘴𝘱𝘰𝘯𝘥𝘢 𝘢𝘭 𝘢𝘶𝘥𝘪𝘰 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢 𝘤𝘰𝘯𝘷𝘦𝘳𝘵𝘪𝘳.🥖`, m)
     } catch {
         await m.react('✖️')
     }
