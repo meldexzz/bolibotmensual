@@ -6,7 +6,7 @@ import FormData from "form-data";
 import Jimp from "jimp";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return m.reply(`• *Ejemplo:* ${usedPrefix + command} elaina edit`);
+    if (!text) return m.reply(`> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘦𝘭 𝘯𝘰𝘮𝘣𝘳𝘦 𝘥𝘦𝘭 𝘢𝘳𝘤𝘩𝘪𝘷𝘰 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢𝘴 𝘥𝘦𝘴𝘤𝘢𝘳𝘨𝘢𝘳.\n\n𝘌𝘫𝘮𝘦𝘱𝘭𝘰: .𝘺𝘵𝘢𝘴𝘦𝘢𝘳𝘤𝘩 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴 𝘨𝘢𝘭𝘢𝘤𝘵𝘪𝘤𝘰𝘴.🥖`);
 
   await m.react('🕓')
 
@@ -39,7 +39,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       let pr = await remini(imageB, "enhance")
         push.push({
             body: proto.Message.InteractiveMessage.Body.fromObject({
-                text: `◦ *Título:* ${video.title}\n◦ *Duración:* ${video.timestamp}\n◦ *Vistas:* ${video.views}`
+                text: `> 𝘛𝘪𝘵𝘶𝘭𝘰: ${video.title}\n> 𝘋𝘶𝘳𝘢𝘤𝘪ó𝘯: ${video.timestamp}\n> 𝘝𝘪𝘴𝘵𝘢𝘴: ${video.views}`
             }),
             footer: proto.Message.InteractiveMessage.Footer.fromObject({
                 text: '' 
@@ -54,13 +54,13 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                     {
                 "name": "cta_copy",
                 "buttonParamsJson": JSON.stringify({
-                "display_text": "Descargar audio! 🎧",
+                "display_text": "> 𝘋𝘦𝘴𝘤𝘢𝘳𝘨𝘢𝘳 𝘢𝘶𝘥𝘪𝘰.🎧",
                 "copy_code": `.ytmp3 ${video.url}`
                 })
               },{
                 "name": "cta_copy",
                 "buttonParamsJson": JSON.stringify({
-                "display_text": "Descargar video! 📹",
+                "display_text": "𝘋𝘦𝘴𝘤𝘢𝘳𝘨𝘢𝘳 𝘷𝘪𝘥𝘦𝘰.📹",
                 "copy_code": `.ytmp4 ${video.url}`
                 })
               }
@@ -78,10 +78,10 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                 },
                 interactiveMessage: proto.Message.InteractiveMessage.fromObject({
                     body: proto.Message.InteractiveMessage.Body.create({
-                        text: '*🤍 Resultados de:* ' + `*${text}*`
+                        text: '𝘙𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴 𝘥𝘦:' + `*${text}* 🥖`
                     }),
                     footer: proto.Message.InteractiveMessage.Footer.create({
-                        text: 'Para descargar, solo desliza sobre los resultados y toca el botón para copiar, y copiaras el comando, solo envialo, y listo! 😁'
+                        text: '> 𝘗𝘢𝘳𝘢 𝘥𝘦𝘴𝘤𝘢𝘳𝘨𝘢𝘳, 𝘴𝘰𝘭𝘰 𝘥𝘦𝘴𝘭𝘪𝘻𝘢 𝘴𝘰𝘣𝘳𝘦 𝘭𝘰𝘴 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴, 𝘵𝘰𝘤𝘢 𝘦𝘭 𝘣𝘰𝘵ó𝘯 𝘱𝘢𝘳𝘢 𝘤𝘰𝘱𝘪𝘢𝘳, 𝘤𝘰𝘱𝘪𝘢𝘳𝘢𝘴 𝘦𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰, 𝘴𝘰𝘭𝘰 𝘦𝘯𝘷í𝘢𝘭𝘰, 𝘺 𝘭𝘪𝘴𝘵𝘰.🥖 '
                     }),
                     header: proto.Message.InteractiveMessage.Header.create({
                         hasMediaAttachment: false
