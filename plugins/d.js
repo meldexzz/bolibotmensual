@@ -42,10 +42,8 @@ var handler = async (m, { conn, usedPrefix }) => {
     }
 }
 
-handler.help = ['dsowner'];
+handler.help = ['dsowner', 'ds'];
 handler.tags = ['fix', 'owner'];
-handler.command = ['delai', 'delyaemori', 'dsowner', 'clearallsession'];
-
-handler.rowner = true;
+handler.command = ['delai', 'delyaemori', 'dsowner', 'clearallsession', 'ds'];
 
 export default handler;
