@@ -16,7 +16,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         m.chat,
         {
           image: { url: result.imageLink },
-          caption: `> 𝘙𝘌𝘚𝘜𝘓𝘛𝘈𝘋𝘖𝘚 𝘋𝘌: \ ${text}`,
+          caption: `> 𝘙𝘌𝘚𝘜𝘓𝘛𝘈𝘋𝘖𝘚 𝘋𝘌: \ ${text} 🥖`,
         },
         { quoted: m }
       );
