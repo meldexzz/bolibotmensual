@@ -2,26 +2,7 @@ let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
 
 export async function before(m, { conn, participants, groupMetadata }) {
   if (!m.messageStubType || !m.isGroup) return
-  const fkontak = { 
-    "key": { 
-      "participants": "0@s.whatsapp.net", 
-      "remoteJid": "status@broadcast", 
-      "fromMe": false, 
-      "id": "Halo" 
-    }, 
-    "message": { 
-      "contactMessage": { 
-        "vcard": `BEGIN:VCARD
-VERSION:3.0
-N:Sy;Bot;;;
-FN:y
-item1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}
-item1.X-ABLabel:Ponsel
-END:VCARD` 
-      }
-    }, 
-    "participant": "0@s.whatsapp.net"
-  }
+
   let chat = global.db.data.chats[m.chat]
   let usuario = `@${m.sender.split`@`[0]}`
   let pp = await conn.profilePictureUrl(m.chat, 'image').catch(_ => null) || 'https://files.catbox.moe/xr2m6u.jpg'
