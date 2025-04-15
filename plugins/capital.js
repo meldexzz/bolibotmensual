@@ -7,7 +7,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     conn.tekateki = conn.tekateki ? conn.tekateki : {}
     let id = m.chat
     if (id in conn.tekateki) {
-        conn.reply(m.chat, 'Todavía hay un juego sin terminar!', conn.tekateki[id][0])
+        conn.reply(m.chat, '> 𝘈𝘶𝘯 𝘩𝘢𝘺 𝘶𝘯 𝘫𝘶𝘦𝘨𝘰 𝘴𝘪𝘯 𝘵𝘦𝘳𝘮𝘪𝘯𝘢𝘳.🥖', conn.tekateki[id][0])
         throw false
     }
 
@@ -135,18 +135,18 @@ let handler = async (m, { conn, usedPrefix }) => {
     let clue = _clue.replace(/[A-Za-z]/g, '_');
 
     let caption = `
-ⷮ *Pais:* ${json.pais}
+> 𝘗𝘢í𝘴: ${json.pais}
 
-*Tiempo:* ${(timeout / 1000).toFixed(2)} segundos
+> 𝘛𝘪𝘦𝘮𝘱𝘰: ${(timeout / 1000).toFixed(2)} 𝘚𝘦𝘨𝘶𝘯𝘥𝘰𝘴.
 
-*Responde con el nombre de la ciudad* 🪄
+> 𝘙𝘦𝘴𝘱𝘰𝘯𝘥𝘦 𝘤𝘰𝘯 𝘦𝘭 𝘯𝘰𝘮𝘣𝘳𝘦 𝘥𝘦 𝘭𝘢 𝘤𝘪𝘶𝘥𝘢𝘥.🥖
 `.trim();
 
     conn.tekateki[id] = [
        await conn.reply(m.chat, caption, m),
         json, poin,
         setTimeout(async () => {
-            if (conn.tekateki[id]) await conn.reply(m.chat, `Se acabó el tiempo!, intenta descubrir la capital de otro país.`, conn.tekateki[id][0]);
+            if (conn.tekateki[id]) await conn.reply(m.chat, `> 𝘚𝘦 𝘢𝘤𝘢𝘣𝘰 𝘦𝘭 𝘵𝘪𝘦𝘮𝘱𝘰, 𝘪𝘯𝘵𝘦𝘯𝘵𝘢 𝘥𝘦𝘴𝘤𝘶𝘣𝘳𝘪𝘳 𝘭𝘢 𝘤𝘢𝘱𝘪𝘵𝘢𝘭 𝘥𝘦 𝘰𝘵𝘳𝘰 𝘱𝘢í𝘴.🥖.`, conn.tekateki[id][0]);
             delete conn.tekateki[id];
         }, timeout)
     ];
