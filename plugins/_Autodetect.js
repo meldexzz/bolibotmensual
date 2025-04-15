@@ -35,44 +35,48 @@ END:VCARD`
 `
   
   let foto = `
-╔═【 🪐 Bolillo-BOT OBSERVA 】═╗
-║ *${usuario}* ha reprogramado la imagen del universo.
-║ 📸 Nueva imagen aplicada al grupo.
-╚════════════════════════╝`
+> ¡ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊-𝘼𝙇𝙀𝙍𝙏𝘼 !.🥖
+> ▸ *_${usuario}_* 
+> ▸ 𝘔𝘰𝘥𝘪𝘧𝘪𝘤𝘰 𝘭𝘢 𝘪𝘮𝘢𝘨𝘦𝘯 𝘥𝘦 𝘨𝘳𝘶𝘱𝘰 𝘢:
+> ▸ 𝙉𝙐𝙀𝙑𝘼 𝙄𝙈𝘼𝙂𝙀𝙉 𝘼𝙋𝙇𝙄𝘾𝘼𝘿𝘼 𝘼𝙇 𝙂𝙍𝙐𝙋𝙊.
+`
   
   let edit = `
-╔═【 💫 Bolillo-BOT CONFIG 】═╗
-║ *${usuario}* ha modificado los protocolos.
-║ Configuración actual: ${m.messageStubParameters[0] == 'on' ? 'Solo administradores' : 'Todos'}
-╚═══════════════════════╝`
+> ¡ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊-𝘼𝙇𝙀𝙍𝙏𝘼 !.🥖
+> ▸ *_${usuario}_*
+> ▸ 𝘙𝘦𝘢𝘭𝘪𝘻𝘰 𝘢𝘭𝘨𝘶𝘯𝘰𝘴 𝘤𝘢𝘮𝘣𝘪𝘰𝘴..
+> ▸ 𝘊𝘰𝘯𝘧𝘪𝘨𝘶𝘳𝘢𝘤𝘪𝘰𝘯 𝘢𝘤𝘵𝘶𝘢𝘭: ${m.messageStubParameters[0] == '𝘰𝘯' ? '𝘴𝘰𝘭𝘰 𝘢𝘥𝘮𝘪𝘯𝘪𝘴𝘵𝘳𝘢𝘥𝘰𝘳𝘦𝘴' : '𝘛𝘰𝘥𝘰𝘴.'}
+`
   
   let newlink = `
-╔══【🔗 Bolillo-BOT LINK 】══╗
-║ El portal ha sido reiniciado por:
-║   » *${usuario}*
-╚═══════════════════════╝`
+> ¡ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊-𝘼𝙇𝙀𝙍𝙏𝘼 !.🥖
+> ▸ 𝘌𝘭 𝘭𝘪𝘯𝘬 𝘩𝘢 𝘴𝘪𝘥𝘰 𝘳𝘦𝘪𝘯𝘪𝘤𝘪𝘢𝘥𝘰 𝘱𝘰𝘳:
+> ▸ *_${usuario}_*
+`
   
   let status = `
-╔═【🔓 Bolillo-BOT STATUS 】═╗
-║ El grupo se encuentra ahora ${m.messageStubParameters[0] == 'on' ? '*cerrado 🔒*' : '*abierto 🔓*'}.
-║ Acción realizada por: *${usuario}*
-║ Configuración: ${m.messageStubParameters[0] == 'on' ? 'Solo administradores' : 'Todos'}
-╚═══════════════════════╝`
+> ¡ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊-𝘼𝙇𝙀𝙍𝙏𝘼 !.🥖
+> ▸ 𝘈𝘩𝘰𝘳𝘢 𝘦𝘭 𝘨𝘳𝘶𝘱𝘰 𝘱𝘦𝘳𝘮𝘢𝘯𝘦𝘤𝘦: ${m.messageStubParameters[0] == '𝘰𝘯' ? '𝘊𝘦𝘳𝘳𝘢𝘥𝘰.🔒' : '𝘈𝘣𝘪𝘦𝘳𝘵𝘰.🔓'}.
+> ▸ 𝘈𝘤𝘤𝘪ó𝘯 𝘳𝘦𝘢𝘭𝘪𝘻𝘢𝘥𝘢 𝘱𝘰𝘳: *_${usuario}_*
+> ▸ 𝘊𝘰𝘯𝘧𝘪𝘨𝘶𝘳𝘢𝘤𝘪ó𝘯: ${m.messageStubParameters[0] == '𝘰𝘯' ? '𝘚𝘰𝘭𝘰 𝘢𝘥𝘮𝘪𝘯𝘪𝘴𝘵𝘳𝘢𝘥𝘰𝘳𝘦𝘴.' : '𝘛𝘰𝘥𝘰𝘴.'}
+`
   
   let admingp = `
-╔═【 👑 Bolillo-BOT ADMIN 】═╗
-║ *${m.messageStubParameters[0].split`@`[0]}* ha sido ascendido al Olimpo de los administradores.
-║ Operación ejecutada por: *${usuario}*
-╚═══════════════════════╝`
+> ¡ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊-𝘼𝙇𝙀𝙍𝙏𝘼 !.🥖
+> ▸ *_${m.messageStubParameters[0].split`@`[0]}_* 
+> ▸ 𝘏𝘢 𝘴𝘪𝘥𝘰 𝘢𝘴𝘤𝘦𝘯𝘥𝘪𝘥𝘰 𝘢 𝘢𝘥𝘮𝘪𝘯𝘪𝘴𝘵𝘳𝘢𝘥𝘰𝘳.
+> ▸ 𝘈𝘤𝘤𝘪ó𝘯 𝘳𝘦𝘢𝘭𝘪𝘻𝘢𝘥𝘢 𝘱𝘰𝘳: *_${usuario}_*
+`
   
   let noadmingp = `
-╔═【⚠️ Bolillo-BOT REMOCIÓN】═╗
-║ *${m.messageStubParameters[0].split`@`[0]}* ha descendido de su trono de administrador.
-║ Acción realizada por: *${usuario}*
-╚═══════════════════════╝`
+> ¡ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊-𝘼𝙇𝙀𝙍𝙏𝘼 !.🥖
+> ▸ *_${m.messageStubParameters[0].split`@`[0]}_* 
+> ▸ 𝘏𝘢 𝘴𝘪𝘥𝘰 𝘥𝘦𝘴𝘤𝘦𝘯𝘥𝘪𝘥𝘰 𝘥𝘦 𝘢𝘥𝘮𝘪𝘯𝘪𝘴𝘵𝘳𝘢𝘥𝘰𝘳.
+> ▸ 𝘈𝘤𝘤𝘪ó𝘯 𝘳𝘦𝘢𝘭𝘪𝘻𝘢𝘥𝘢 𝘱𝘰𝘳: *_${usuario}_*
+`
 
   if (chat.detect && m.messageStubType == 21) {
-    await conn.sendMessage(m.chat, { text: nombre, mentions: [m.sender] }, { quoted: fkontak })
+    await conn.sendMessage(m.chat, { text: nombre, mentions: [m.sender] })
   } else if (chat.detect && m.messageStubType == 22) {
     await conn.sendMessage(m.chat, { image: { url: pp }, caption: foto, mentions: [m.sender] }, { quoted: fkontak })
   } else if (chat.detect && m.messageStubType == 23) {
