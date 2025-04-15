@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default
 
 let handler = async (m, { conn, text }) => {
-    if (!text) return m.reply('Ingresa el texto de lo que quieres buscar en imágenes 🔍');
+    if (!text) return m.reply('> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘦𝘭 𝘵𝘦𝘹𝘵𝘰 𝘥𝘦 𝘭𝘰 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢𝘴 𝘣𝘶𝘴𝘤𝘢𝘳 𝘦𝘯 𝘪𝘮á𝘨𝘦𝘯𝘦𝘴.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘪𝘮𝘢𝘨𝘦𝘯 𝘣𝘰𝘭𝘪𝘭𝘭𝘰.🥖');
     await m.react('🕓');
 
     try {
@@ -20,7 +20,7 @@ let handler = async (m, { conn, text }) => {
 
             push.push({
                 body: proto.Message.InteractiveMessage.Body.fromObject({
-                    text: `◦ *Título:* ${result.title} \n◦ *Descripción:* ${result.snippet}`
+                    text: `> 𝘛𝘪𝘵𝘶𝘭𝘰: ${result.title} \n> 𝘋𝘦𝘴𝘤𝘳𝘪𝘱𝘤𝘪ó𝘯: ${result.snippet}`
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '' }),
                 header: proto.Message.InteractiveMessage.Header.fromObject({
