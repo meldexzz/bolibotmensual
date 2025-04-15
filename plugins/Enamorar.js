@@ -12,7 +12,7 @@ let love = `━━━━━━━━━━━━━━━
 m.reply(love, null, { mentions: conn.parseMention(love) })
 
 }
-handler.help = ['love']
+handler.help = ['enamorar']
 handler.tags = ['fun']
 handler.command = /^(enamorar|ship)$/i
 
