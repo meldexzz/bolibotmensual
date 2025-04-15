@@ -5,28 +5,28 @@ import axios from "axios"
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     if (!text.trim()) {
-      return conn.reply(m.chat, `❀ Por favor, ingresa el nombre de la música a descargar.`, m)
+      return conn.reply(m.chat, `> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘦𝘭 𝘯𝘰𝘮𝘣𝘳𝘦 𝘥𝘦 𝘭𝘢 𝘮ú𝘴𝘪𝘤𝘢 𝘢 𝘥𝘦𝘴𝘤𝘢𝘳𝘨𝘢𝘳.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘺𝘵𝘢 𝘴𝘢𝘤𝘢 𝘭𝘰𝘴 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖`, m)
     }
 
     const search = await yts(text)
     if (!search.all || search.all.length === 0) {
-      return m.reply('✧ No se encontraron resultados para tu búsqueda.')
+      return m.reply('> 𝘕𝘰 𝘴𝘦 𝘱𝘶𝘥𝘰 𝘰𝘣𝘵𝘦𝘯𝘦𝘳 𝘦𝘭 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰 𝘱𝘢𝘳𝘢 𝘵𝘶 𝘣ú𝘴𝘲𝘶𝘦𝘥𝘢.🥖')
     }
 
     const videoInfo = search.all[0]
     if (!videoInfo) {
-      return m.reply('✧ No se pudo obtener información del video.')
+      return m.reply('> 𝘕𝘰 𝘴𝘦 𝘱𝘶𝘥𝘰 𝘰𝘣𝘵𝘦𝘯𝘦𝘳 𝘦𝘭 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰 𝘱𝘢𝘳𝘢 𝘵𝘶 𝘣ú𝘴𝘲𝘶𝘦𝘥𝘢.🥖.')
     }
 
     const { title, thumbnail, timestamp, views, ago, url, author } = videoInfo
 
     if (!title || !thumbnail || !timestamp || !views || !ago || !url || !author) {
-      return m.reply('✧ Información incompleta del video.')
+      return m.reply('> 𝘐𝘯𝘧𝘰𝘳𝘮𝘢𝘤𝘪ó𝘯 𝘪𝘯𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘢 𝘥𝘦𝘭 𝘷𝘪𝘥𝘦𝘰.🥖')
     }
 
     const vistas = formatViews(views)
     const canal = author.name ? author.name : 'Desconocido'
-    const infoMessage = `「✦」Descargando *<${title || 'Desconocido'}>*\n\n> ✦ Canal » *${canal}*\n> ✰ Vistas » *${vistas || 'Desconocido'}*\n> ⴵ Duración » *${timestamp || 'Desconocido'}*\n> ✐ Publicación » *${ago || 'Desconocido'}*\n> 🜸 Link » ${url}`
+    const infoMessage = `> 𝘋𝘦𝘴𝘤𝘢𝘳𝘨𝘢𝘯𝘥𝘰: ${title || '𝘋𝘦𝘴𝘤𝘰𝘯𝘰𝘤𝘪𝘥𝘰'}\n\n> 𝘊𝘢𝘯𝘢𝘭: *${canal}*\n> 𝘝𝘪𝘴𝘵𝘢𝘴: *${vistas || '𝘋𝘦𝘴𝘤𝘰𝘯𝘰𝘤𝘪𝘥𝘰'}*\n> 𝘋𝘶𝘳𝘢𝘤𝘪ó𝘯: *${timestamp || '𝘋𝘦𝘴𝘤𝘰𝘯𝘰𝘤𝘪𝘥𝘰'}*\n> 𝘗𝘶𝘣𝘭𝘪𝘤𝘢𝘤𝘪ó𝘯:  *${ago || '𝘋𝘦𝘴𝘤𝘰𝘯𝘰𝘤𝘪𝘥𝘰'}*\n> 𝘓𝘪𝘯𝘬: ${url}`
 
     const thumb = (await conn.getFile(thumbnail))?.data
 
@@ -53,11 +53,11 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         const resulta = api.result
         const result = resulta.download.url
 
-        if (!result) throw new Error('⚠ El enlace de audio no se generó correctamente.')
+        if (!result) throw new Error('> 𝘕𝘰 𝘴𝘦 𝘨𝘦𝘯𝘦𝘳𝘰 𝘦𝘭 𝘢𝘶𝘥𝘪𝘰 𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘢𝘮𝘦𝘯𝘵𝘦.🥖')
 
         await conn.sendMessage(m.chat, { audio: { url: result }, fileName: `${api.result.title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
       } catch (e) {
-        return conn.reply(m.chat, '⚠︎ No se pudo enviar el audio. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente más tarde.', m)
+        return conn.reply(m.chat, '> 𝘈𝘳𝘤𝘩𝘪𝘷𝘰 𝘥𝘦𝘮𝘢𝘴𝘪𝘢𝘥𝘰 𝘱𝘦𝘴𝘢𝘥𝘰 𝘰 𝘜𝘙𝘓 𝘪𝘯𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘢.🥖', m)
       }
     } else if (command === 'play2' || command === 'ytv' || command === 'ytmp4') {
       try {
@@ -66,18 +66,18 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         const resultad = json.result
         const resultado = resultad.download.url
 
-        if (!resultad || !resultado) throw new Error('⚠ El enlace de video no se generó correctamente.')
+        if (!resultad || !resultado) throw new Error('> 𝘕𝘰 𝘴𝘦 𝘨𝘦𝘯𝘦𝘳𝘰 𝘦𝘭 𝘢𝘶𝘥𝘪𝘰 𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘢𝘮𝘦𝘯𝘵𝘦.🥖.')
 
         await conn.sendMessage(m.chat, { video: { url: resultado }, fileName: resultad.title, mimetype: 'video/mp4', caption: title }, { quoted: m })
       } catch (e) {
-        return conn.reply(m.chat, '⚠︎ No se pudo enviar el video. Esto puede deberse a que el archivo es demasiado pesado o a un error en la generación de la URL. Por favor, intenta nuevamente más tarde.', m)
+        return conn.reply(m.chat, '> 𝘈𝘳𝘤𝘩𝘪𝘷𝘰 𝘥𝘦𝘮𝘢𝘴𝘪𝘢𝘥𝘰 𝘱𝘦𝘴𝘢𝘥𝘰 𝘰 𝘜𝘙𝘓 𝘪𝘯𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘢.🥖', m)
       }
     } else {
-      return conn.reply(m.chat, '✧︎ Comando no reconocido.', m)
+      return conn.reply(m.chat, '> 𝘊𝘰𝘮𝘢𝘯𝘥𝘰 𝘯𝘰 𝘳𝘦𝘤𝘰𝘯𝘰𝘤𝘪𝘥𝘰.🥖', m)
     }
 
   } catch (error) {
-    return m.reply(`⚠︎ Ocurrió un error: ${error}`)
+    return m.reply(`𝘖𝘤𝘶𝘳𝘳𝘪ó 𝘶𝘯 𝘦𝘳𝘳𝘰𝘳: ${error}`)
   }
 }
 
