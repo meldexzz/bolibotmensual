@@ -23,7 +23,7 @@ handler.before = async (m) => {
 export default handler;
 
 async function simitalk(ask, apikeyyy = "iJ6FxuA9vxlvz5cKQCt3", language = "es") {
-    if (!ask) return { status: false, resultado: { msg: "Debes ingresar un texto para hablar con simsimi." }};
+    if (!ask) return { status: false, resultado: { msg: "> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘶𝘯 𝘵𝘦𝘹𝘵𝘰 𝘱𝘢𝘳𝘢 𝘩𝘢𝘣𝘭𝘢𝘳 𝘤𝘰𝘯 𝘚𝘐𝘔𝘐.🥖" }};
     try {
         const response1 = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/simi?text=${encodeURIComponent(ask)}`);
         const trad1 = await translate(`${response1.data.data.message}`, {to: language, autoCorrect: true});
@@ -34,7 +34,7 @@ async function simitalk(ask, apikeyyy = "iJ6FxuA9vxlvz5cKQCt3", language = "es")
             const response2 = await axios.get(`https://anbusec.xyz/api/v1/simitalk?apikey=${apikeyyy}&ask=${ask}&lc=${language}`);
             return { status: true, resultado: { simsimi: response2.data.message }};       
         } catch (error2) {
-            return { status: false, resultado: { msg: "Todas las API's fallarón. Inténtalo de nuevo más tarde.", error: error2.message }};
+            return { status: false, resultado: { msg: "𝘛𝘰𝘥𝘢𝘴 𝘭𝘢𝘴 𝘈𝘗𝘐𝘴 𝘧𝘢𝘭𝘭𝘢𝘳𝘰𝘯, 𝘪𝘯𝘵𝘦𝘯𝘵𝘢 𝘥𝘦 𝘯𝘶𝘦𝘷𝘰. 🥖", error: error2.message }};
         }
     }
 }
