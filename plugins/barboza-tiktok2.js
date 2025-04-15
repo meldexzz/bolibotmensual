@@ -10,21 +10,12 @@ console.log(data)
   let start = Date.now();
   let sp = (Date.now() - start) + 'ms'
   let cap = `> 𝘛𝘪𝘬𝘛𝘰𝘬 𝘤𝘢𝘭𝘪𝘥𝘢𝘥 𝘯𝘰𝘳𝘮𝘢𝘭.🥖`
-  let capp = `> 𝘛𝘪𝘬𝘛𝘰𝘬 𝘤𝘢𝘭𝘪𝘥𝘢𝘥 𝘏𝘋.🥖`
   await m.react('🕓');
   await conn.sendMessage(m.chat, {
                     video: {
                         url: data.server1.url
                     },
                     caption: cap
-                }, {
-                    quoted: m
-                })
-await conn.sendMessage(m.chat, {
-                    video: {
-                        url: data.serverHD.url
-                    },
-                    caption: capp
                 }, {
                     quoted: m
                 })
@@ -63,10 +54,6 @@ async function tiktokdl(url) {
         result.server1 = {
             quality: "MEDIUM",
             url: $("div.video-data > div > .tik-right > div > p:nth-child(1) > a").attr("href")
-        };
-        result.serverHD = {
-            quality: $("div.video-data > div > .tik-right > div > p:nth-child(3) > a").text().split("MP4 ")[1],
-            url: $("div.video-data > div > .tik-right > div > p:nth-child(3) > a").attr("href")
         };
         result.audio = $("div.video-data > div > .tik-right > div > p:nth-child(4) > a").attr("href");
 
