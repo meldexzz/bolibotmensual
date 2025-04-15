@@ -671,7 +671,7 @@ let handler = async (m, { conn }) => {
     
   } catch (err) {
     console.error(err);
-    m.reply('Ocurrió un error al enviar el audio.');
+    m.reply('> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴.🥖');
   }
 };
 
