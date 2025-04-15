@@ -26,7 +26,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     const vistas = formatViews(views)
     const canal = author.name ? author.name : 'Desconocido'
-    const infoMessage = `𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙣𝙙𝙤 *<${title || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}>*\n\n>  𝘊𝘢𝘯𝘢𝘭 » *${canal}*\n> 𝘝𝘪𝘴𝘵𝘢𝘴 » *${vistas || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘋𝘶𝘳𝘢𝘤𝘪ó𝘯 » *${timestamp || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘗𝘶𝘣𝘭𝘪𝘤𝘢𝘤𝘪ó𝘯 » *${ago || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘓𝘪𝘯𝘬 » ${url}`
+    const infoMessage = `𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙣𝙙𝙤: *<${title || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}>*\n\n> 𝘊𝘢𝘯𝘢𝘭 » *${canal}*\n> 𝘝𝘪𝘴𝘵𝘢𝘴 » *${vistas || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘋𝘶𝘳𝘢𝘤𝘪ó𝘯 » *${timestamp || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘗𝘶𝘣𝘭𝘪𝘤𝘢𝘤𝘪ó𝘯 » *${ago || '𝘿𝙚𝙨𝙘𝙤𝙣𝙤𝙘𝙞𝙙𝙤'}*\n> 𝘓𝘪𝘯𝘬 » ${url}`
 
     const thumb = (await conn.getFile(thumbnail))?.data
 
