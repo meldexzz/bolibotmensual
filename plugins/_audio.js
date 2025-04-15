@@ -4,7 +4,7 @@ import qs from 'qs';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return m.reply(`°Ejemplo *${usedPrefix + command} Mi Niña Ozuna*`);
+    return m.reply(`> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘦𝘭 𝘯𝘰𝘮𝘣𝘳𝘦 𝘥𝘦𝘭 𝘢𝘶𝘥𝘪𝘰.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘢𝘶𝘥𝘪𝘰 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴 𝘥𝘦𝘴𝘢𝘴𝘵𝘳𝘰𝘴𝘰𝘴.🥖`);
   }
 
   const appleMusic = {
@@ -42,7 +42,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         });
         return response.data;
       } catch (error) {
-        console.error("Error obteniendo datos de Apple Music Downloader:", error.message);
+        console.error("> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴.🥖", error.message);
         return { success: false, message: error.message };
       }
     },
@@ -50,7 +50,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     download: async (url) => {
       const musicData = await appledown.getData(url);
       if (!musicData || !musicData.name) {
-        return { success: false, message: "No se encontraron datos de música." };
+        return { success: false, message: "> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴.🥖" };
       }
 
       // Codificar datos necesarios
@@ -94,7 +94,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
           download: audioUrl
         };
       } catch (error) {
-        console.error("Error descargando música de Apple Music:", error.message);
+        console.error("> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴.🥖 ", error.message);
         return { success: false, message: error.message };
       }
     },
@@ -118,7 +118,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         const response = await axios.post(url, qs.stringify(data), { headers });
         return response.data.dlink;
       } catch (error) {
-        console.error("Error obteniendo audio de Apple Music:", error.message);
+        console.error("> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘳𝘦𝘴𝘶𝘭𝘵𝘢𝘥𝘰𝘴.🥖", error.message);
         return { success: false, message: error.message };
       }
     }
