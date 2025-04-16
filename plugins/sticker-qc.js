@@ -7,9 +7,9 @@ const handler = async (m, { conn, args }) => {
         text = args.slice(0).join(" ");
     } else if (m.quoted && m.quoted.text) {
         text = m.quoted.text;
-    } else throw "🚩 Ingresa un texto junto al comando.";
-   if (!text) return conn.reply(m.chat, '🚩 Ingresa un texto junto al comando.', m)
-   if (text.length > 30) return conn.reply(m.chat, 'Solo se permiten 30 caracteres como Máximo.', m)
+    } else throw "> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘶𝘯 𝘵𝘦𝘹𝘵𝘰 𝘱𝘢𝘳𝘢 𝘵𝘳𝘢𝘯𝘴𝘧𝘰𝘳𝘮𝘢𝘳𝘭𝘰 𝘦𝘯 𝘲𝘶𝘰𝘵𝘭𝘺.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘲𝘤 𝘩𝘰𝘭𝘢 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖";
+   if (!text) return conn.reply(m.chat, '> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘶𝘯 𝘵𝘦𝘹𝘵𝘰 𝘱𝘢𝘳𝘢 𝘵𝘳𝘢𝘯𝘴𝘧𝘰𝘳𝘮𝘢𝘳𝘭𝘰 𝘦𝘯 𝘲𝘶𝘰𝘵𝘭𝘺. 𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘲𝘤 𝘩𝘰𝘭𝘢 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖', m)
+   if (text.length > 30) return conn.reply(m.chat, '> 𝘓𝘪𝘮𝘪𝘵𝘦 𝘥𝘦 30 𝘤𝘢𝘳𝘢𝘤𝘵𝘦𝘳𝘦𝘴 𝘦𝘹𝘤𝘦𝘥𝘪𝘥𝘰.🥖', m)
 
     const randomColor = ['#000000'];
 
