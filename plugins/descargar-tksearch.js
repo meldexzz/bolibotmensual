@@ -70,7 +70,7 @@ async function sendVideoWithButtons(session, m, conn, usedPrefix) {
         if (session.currentIndex + 1 < session.videos.length) {
             buttons.push({
                 buttonId: `${usedPrefix}tkseguir`,
-                buttonText: { displayText: "> 𝘚𝘪𝘨𝘶𝘪𝘦𝘯𝘵𝘦 𝘷𝘪𝘥𝘦𝘰.🥖" },
+                buttonText: { displayText: "𝘚𝘪𝘨𝘶𝘪𝘦𝘯𝘵𝘦 𝘷𝘪𝘥𝘦𝘰.🥖" },
                 type: 1
             });
         }
