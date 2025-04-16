@@ -7,11 +7,11 @@ import fg from 'senna-fg';
 
 let handler = async (m, { conn, args, command }) => {
 
-if (!args[0]) return m.reply(`🍭 Ingresa Un Link De YouTube.`);
+if (!args[0]) return m.reply(`> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘶𝘯 𝘭𝘪𝘯𝘬 𝘥𝘦 𝘺𝘰𝘶𝘵𝘶𝘣𝘦.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘺𝘵𝘮𝘱3𝘥𝘰𝘤 𝘩𝘵𝘵𝘱𝘴://𝘺𝘰𝘶𝘵𝘶.𝘣𝘦/-0𝘝𝘙𝘳𝘯𝘑𝘹7𝘶8?𝘴𝘪=𝘦𝘜8𝘵8𝘜9𝘵8𝘳𝘷2𝘊𝘣𝘚7🥖`);
 
 let pene = await(await fetch(`https://delirius-apiofc.vercel.app/download/ytmp4?url=${args[0]}`)).json();
 
-let texto = `「❖」𝗥𝗲𝘀𝘂𝗹𝘁𝗮𝗱𝗼 𝗗𝗲 ${pene.data.title}\n\n✦ *Autor:* ${pene.data.author}\n✦ *Duración:* ${pene.data.duration}\n✦ *Comentarios:* ${pene.data.comments}\n✦ *Vistas:* ${pene.data.views}\n> ${dev}`
+let texto = `> 𝗥𝗲𝘀𝘂𝗹𝘁𝗮𝗱𝗼 𝗗𝗲 ${pene.data.title}\n\n> Autor:* ${pene.data.author}\n> Duración:* ${pene.data.duration}\n> Comentarios:* ${pene.data.comments}\n> Vistas:* ${pene.data.views}\n> ${dev}`
 
 m.react('🕒')
 conn.sendMessage(m.chat, { image: { url: pene.data.image }, caption: texto }, { quoted: m });
