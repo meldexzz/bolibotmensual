@@ -15,7 +15,7 @@ const tiktokHandler = async (m, { conn, command, args, usedPrefix }) => {
         if (!query) {
             return conn.reply(
                 m.chat,
-                `❌ Escribe lo que quieres buscar\nEjemplo: ${usedPrefix}tksearch Videos Graciosos `,
+                `> 𝘌𝘴𝘤𝘳𝘪𝘣𝘦 𝘦𝘭 𝘵𝘪𝘬𝘵𝘰𝘬 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢𝘴 𝘣𝘶𝘴𝘤𝘢𝘳.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘵𝘬𝘴𝘦𝘢𝘳𝘤𝘩 𝘷𝘪𝘥𝘦𝘰𝘴 𝘥𝘦 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖 `,
                 m
             );
         }
@@ -29,7 +29,7 @@ const tiktokHandler = async (m, { conn, command, args, usedPrefix }) => {
             const data = await response.json();
 
             if (!data.meta || !data.meta.length) {
-                return conn.reply(m.chat, '❌ No se encontraron videos', m);
+                return conn.reply(m.chat, '> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘷𝘪𝘥𝘦𝘰𝘴.🥖', m);
             }
 
             session.videos = data.meta;
@@ -38,17 +38,17 @@ const tiktokHandler = async (m, { conn, command, args, usedPrefix }) => {
             return await sendVideoWithButtons(session, m, conn, usedPrefix);
         } catch (error) {
             console.error(error);
-            return conn.reply(m.chat, '❌ Error al buscar videos', m);
+            return conn.reply(m.chat, '> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘷𝘪𝘥𝘦𝘰𝘴.🥖', m);
         }
     }
 
     if (command === 'tkseguir') {
         if (!session.videos.length) {
-            return conn.reply(m.chat, '❌ Primero usa .tksearch para buscar videos', m);
+            return conn.reply(m.chat, '> 𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘵𝘬𝘴𝘦𝘢𝘳𝘤𝘩 𝘷𝘪𝘥𝘦𝘰𝘴 𝘥𝘦 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖', m);
         }
 
         if (session.currentIndex + 1 >= session.videos.length) {
-            return conn.reply(m.chat, '✅ No hay más videos, vuelve a buscar.', m);
+            return conn.reply(m.chat, '> 𝘕𝘰 𝘴𝘦 𝘦𝘯𝘤𝘰𝘯𝘵𝘳𝘢𝘳𝘰𝘯 𝘮𝘢𝘴 𝘷𝘪𝘥𝘦𝘰𝘴.🥖', m);
         }
 
         session.currentIndex += 1;
@@ -61,8 +61,8 @@ async function sendVideoWithButtons(session, m, conn, usedPrefix) {
     const video = session.videos[session.currentIndex];
 
     const caption = session.currentIndex === 0 
-        ? `✅ Usa el botón para ver más videos.\n\n_*©Prohibido La Copia, Código Oficial De Bolillo Bot ™*_`
-        : `_*©Prohibido La Copia, Código Oficial De Bolillo Bot™*_`;
+        ? `> ¡𝘜𝘴𝘢 𝘦𝘭 𝘣𝘰𝘵ó𝘯 𝘱𝘢𝘳𝘢 𝘷𝘦𝘳 𝘮𝘢𝘴 𝘷𝘪𝘥𝘦𝘰𝘴!.🥖\n\n> 𝘊𝘰𝘥𝘦 𝘤𝘳𝘦𝘢𝘵𝘦𝘥 𝘣𝘺 𝘔𝘦𝘭𝘥𝘦𝘹𝘻𝘻.`
+        : `> 𝘊ó𝘥𝘪𝘨𝘰 𝘤𝘳𝘦𝘢𝘥𝘰 ú𝘯𝘪𝘤𝘢𝘮𝘦𝘯𝘵𝘦 𝘱𝘢𝘳𝘢 𝘉𝘰𝘭𝘪𝘭𝘭𝘰𝘉𝘰𝘵.🥖`;
 
     try {
         const buttons = [];
@@ -70,7 +70,7 @@ async function sendVideoWithButtons(session, m, conn, usedPrefix) {
         if (session.currentIndex + 1 < session.videos.length) {
             buttons.push({
                 buttonId: `${usedPrefix}tkseguir`,
-                buttonText: { displayText: "➡️ Siguiente Video" },
+                buttonText: { displayText: "> 𝘚𝘪𝘨𝘶𝘪𝘦𝘯𝘵𝘦 𝘷𝘪𝘥𝘦𝘰.🥖" },
                 type: 1
             });
         }
@@ -87,7 +87,7 @@ async function sendVideoWithButtons(session, m, conn, usedPrefix) {
         );
     } catch (error) {
         console.error(error);
-        conn.reply(m.chat, '❌ Error al enviar el video', m);
+        conn.reply(m.chat, '> 𝘌𝘳𝘳𝘰𝘳 𝘢𝘭 𝘦𝘯𝘷𝘪𝘢𝘳 𝘦𝘭 𝘷𝘪𝘥𝘦𝘰.🥖', m);
     }
 }
 
