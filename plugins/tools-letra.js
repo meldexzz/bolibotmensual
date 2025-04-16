@@ -1,5 +1,5 @@
 function handler(m, { text }) {
-if (!text) return conn.reply(m.chat, '⌨ Por favor, ingresa el texto que quieres transformar.', m)
+if (!text) return conn.reply(m.chat, '> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘦𝘭 𝘵𝘦𝘹𝘵𝘰 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢𝘴 𝘵𝘳𝘢𝘯𝘴𝘧𝘰𝘳𝘮𝘢𝘳.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘭𝘦𝘵𝘳𝘢 𝘣𝘰𝘭𝘪𝘭𝘭𝘰.🥖', m)
 
 let teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.text
 m.reply(teks.replace(/[a-z]/gi, v => {
