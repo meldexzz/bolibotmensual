@@ -28,7 +28,7 @@ let handler = async (m, { conn, text }) => {
     // Si no hay texto, pedimos que ingrese uno
     if (!text || text.trim().length === 0) {
         return conn.sendMessage(m.chat, {
-            text: `${emoji} Por favor ingresa el texto para hacer un sticker.`,
+            text: `> 𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘦𝘭 𝘵𝘦𝘹𝘵𝘰 𝘫𝘶𝘯𝘵𝘰 𝘢𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰 𝘱𝘢𝘳𝘢 𝘤𝘳𝘦𝘢𝘳 𝘶𝘯 𝘴𝘵𝘪𝘤𝘬𝘦𝘳.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰 .𝘴𝘵 𝘩𝘰𝘭𝘢🥖`,
         }, { quoted: m });
     }
 
@@ -40,12 +40,12 @@ let handler = async (m, { conn, text }) => {
         if (stiker) {
             return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m);
         } else {
-            throw new Error("No se pudo generar el sticker.");
+            throw new Error("> 𝘌𝘳𝘳𝘰𝘳, 𝘯𝘰 𝘴𝘦 𝘱𝘶𝘥𝘰 𝘨𝘦𝘯𝘦𝘳𝘢𝘳 𝘦𝘭 𝘴𝘵𝘪𝘤𝘬𝘦𝘳.🥖");
         }
     } catch (error) {
         console.error(error);
         return conn.sendMessage(m.chat, {
-            text: `${msm} Ocurrió un error: ${error.message}`,
+            text: `> 𝘌𝘳𝘳𝘰𝘳, 𝘯𝘰 𝘴𝘦 𝘱𝘶𝘥𝘰 𝘨𝘦𝘯𝘦𝘳𝘢𝘳 𝘦𝘭 𝘴𝘵𝘪𝘤𝘬𝘦𝘳.🥖`,
         }, { quoted: m });
     }
 };
