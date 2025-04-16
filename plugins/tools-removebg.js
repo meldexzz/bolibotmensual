@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 const handler = async (m, {conn, text, usedPrefix, command}) => {
-if (!text) throw `*🧑‍💻 ingrese la URL de la imagen.*`;
+if (!text) throw `𝘐𝘯𝘨𝘳𝘦𝘴𝘢 𝘭𝘢 𝘜𝘙𝘓 (𝘭𝘪𝘯𝘬) 𝘥𝘦 𝘭𝘢 𝘪𝘮𝘢𝘨𝘦𝘯, 𝘱𝘢𝘳𝘢 𝘱𝘰𝘥𝘦𝘳 𝘦𝘭𝘪𝘮𝘪𝘯𝘢𝘳 𝘦𝘭 𝘧𝘰𝘯𝘥𝘰.🥖`;
 m.react('🕒');
-await conn.sendMessage(m.chat, {text: '*🧑‍💻 Eliminando, Espere Un Momento...*'}, {quoted: m});
+await conn.sendMessage(m.chat, {text: '> 𝘌𝘭𝘪𝘮𝘪𝘯𝘢𝘯𝘥𝘰 𝘧𝘰𝘯𝘥𝘰, 𝘦𝘴𝘱𝘦𝘳𝘦 𝘱𝘰𝘳 𝘧𝘢𝘷𝘰𝘳.🥖'}, {quoted: m});
 try {
 const formData = new FormData();
 formData.append("size", "auto");
