@@ -16,7 +16,7 @@ const handler = async (m, {conn, args, usedPrefix, command}) => {
   } catch (e) {
     m.reply(e + '');
     text = args.join(' ');
-    if (!text) throw `*🧑‍💻 Te Faltó Un Texto*\n\nEjemplo:\n- !tts Hola Anar`;
+    if (!text) throw `> 𝘌𝘴𝘤𝘳𝘪𝘣𝘦 𝘦𝘭 𝘵𝘦𝘹𝘵𝘰 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢𝘴 𝘤𝘰𝘯𝘷𝘦𝘳𝘵𝘪𝘳 𝘢 𝘢𝘶𝘥𝘪𝘰.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘵𝘵𝘴 𝘩𝘰𝘭𝘢 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖`;
     res = await tts(text, defaultLang);
   } finally {
     if (res) conn.sendFile(m.chat, res, 'tts.opus', null, m, true);
