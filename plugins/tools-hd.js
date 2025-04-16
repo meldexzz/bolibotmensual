@@ -4,7 +4,7 @@ const handler = async (m, {conn, usedPrefix, command}) => {
   try {    
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || q.mediaType || ""
-  if (!mime) return conn.reply(m.chat, `🚩 Responde a una *Imagen.*`, m)
+  if (!mime) return conn.reply(m.chat, `> 𝘙𝘦𝘴𝘱𝘰𝘯𝘥𝘦 𝘢 𝘭𝘢 𝘪𝘮𝘢𝘨𝘦𝘯 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢𝘴 𝘤𝘰𝘯𝘷𝘦𝘳𝘵𝘪𝘳 𝘦𝘯 𝘏𝘋.🥖`, m)
   await m.react('🕓')
   let img = await q.download?.()
   let pr = await remini(img, "enhance")
