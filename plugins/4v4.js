@@ -1,53 +1,71 @@
-const handler = async (m, { conn, args }) => {
-  if (args.length < 2) {
-    return await conn.sendMessage(m.chat, { text: '❌ Debes escribir el horario y la modalidad. Ejemplo:\n\n.4vs4 23:45 clk' });
+import fg from 'api-dylux'
+import fetch from 'node-fetch'
+import axios from 'axios'
+
+let inscritos = []
+
+let handler = async (m, { conn, args, command, usedPrefix }) => {
+  if (!args[0]) {
+    const text = `
+𝟒 𝐕𝐄𝐑𝐒𝐔𝐒 𝟒
+
+⏱ 𝐇𝐎𝐑𝐀𝐑𝐈𝐎                       •
+🇲🇽 𝐌𝐄𝐗𝐈𝐂𝐎 : 
+🇨🇴 𝐂𝐎𝐋𝐎𝐌𝐁𝐈𝐀 :                
+
+➥ 𝐌𝐎𝐃𝐀𝐋𝐈𝐃𝐀𝐃: 
+➥ 𝐉𝐔𝐆𝐀𝐃𝐎𝐑𝐄𝐒:
+
+      𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 1
+    
+    👑 ┇ 
+    🥷🏻 ┇  
+    🥷🏻 ┇ 
+    🥷🏻 ┇  
+    
+    ʚ 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄𝐒:
+    🥷🏻 ┇ 
+    🥷🏻 ┇
+
+𝗣𝗔𝗥𝗧𝗜𝗖𝗜𝗣𝗔𝗡𝗧𝗘𝗦 𝗔𝗡𝗢𝗧𝗔𝗗𝗢𝗦:
+${inscritos.length === 0 ? 'Ninguno aún.' : inscritos.map((n, i) => `${i + 1}. ${n}`).join('\n')}
+    `.trim()
+
+    const buttons = [
+      { buttonId: `${usedPrefix}4vs4 anotar`, buttonText: { displayText: '✏️ Anotarse' }, type: 1 },
+      { buttonId: `${usedPrefix}4vs4 limpiar`, buttonText: { displayText: '🗑 Limpiar lista' }, type: 1 }
+    ]
+
+    await conn.sendMessage(m.chat, {
+      text,
+      buttons,
+      headerType: 1
+    }, { quoted: m })
+
+    return
   }
 
-  let horaMex = args[0]; // Hora ingresada (México)
-  let modalidad = args[1].toUpperCase(); // Modalidad ingresada en mayúsculas
-
-  // Validar formato de hora (HH:MM)
-  if (!/^\d{1,2}:\d{2}$/.test(horaMex)) {
-    return await conn.sendMessage(m.chat, { text: '⚠️ Formato de hora inválido. Usa HH:MM. Ejemplo:\n\n.4vs4 23:45 clk' });
+  if (args[0].toLowerCase() === 'anotar') {
+    const nombre = m.pushName || 'Usuario'
+    if (inscritos.includes(nombre)) {
+      return m.reply('❗Ya estás anotado.')
+    }
+    inscritos.push(nombre)
+    m.reply(`✅ *${nombre}* ha sido anotado.`)
+    return
   }
 
-  // Convertir hora de México a Colombia (-1 hora de diferencia)
-  let [horas, minutos] = horaMex.split(':').map(Number);
-  let horaCol = (horas - 1 + 24) % 24; // Ajuste para que no haya valores negativos
+  if (args[0].toLowerCase() === 'limpiar') {
+    inscritos = []
+    m.reply('🧹 Lista de participantes limpiada.')
+    return
+  }
+}
 
-  // Formatear la hora (asegurar que siempre tenga 2 dígitos)
-  let horaColStr = `${horaCol.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+handler.help = ['4vs4']
+handler.tags = ['freefire']
+handler.command = /^(vs4|4vs4|masc4)$/i
+handler.group = true
+handler.admin = true
 
-  // Mensaje actualizado con la hora y modalidad
-  let lista = `
-╭──────⚔──────╮
-┇➤ 4 𝐕𝐄𝐑𝐒𝐔𝐒 4
-╰──────⚔──────╯
-
-╭──────────────╮
-┇➤ ⏱ 𝐇𝐎𝐑𝐀𝐑𝐈𝐎  
-┇➤ 🇲🇽 𝐌𝐄𝐗 : ${horaMex}  
-┇➤ 🇨🇴 𝐂𝐎𝐋 : ${horaColStr}  
-
-┇➤ 𝐌𝐎𝐃𝐀𝐋𝐈𝐃𝐀𝐃: ${modalidad}  
-┇➥ 𝐉𝐔𝐆𝐀𝐃𝐎𝐑𝐄𝐒:  
-┇➥ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-
-┇➥ ʚ 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄:  
-┇➥ 👨🏻‍💼 ➤  
-┇➥ 👨🏻‍💼 ➤  
-╰─────────────
-
-➤ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕 / 𝙅𝙊𝙎𝙎 🥖
-  `.trim();
-
-  await conn.sendMessage(m.chat, { text: lista });
-};
-
-handler.command = /^(4vs4)$/i;
-export default handler;
-
+export default handler
