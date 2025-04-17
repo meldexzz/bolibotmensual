@@ -50,8 +50,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 ┇➤ 🇨🇴 𝐂𝐎𝐋 : ${horaColStr}  
 
 ┇➤ 𝐌𝐎𝐃𝐀𝐋𝐈𝐃𝐀𝐃: ${modalidad || 'Por definir'}  
-┇➥ 𝐉𝐔𝐆𝐀𝐃𝐎𝐑𝐄𝐒:  
-┇➥ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔  
+┇➥ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔:  
 ┇➥ 👨🏻‍💻 ➤ ${equipo[0] || ''}
 ┇➥ 👨🏻‍💻 ➤ ${equipo[1] || ''}  
 ┇➥ 👨🏻‍💻 ➤ ${equipo[2] || ''}
@@ -62,22 +61,22 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 ┇➥ 👨🏻‍💼 ➤ ${suplentes[1] || ''}
 ╰─────────────╯
 
-➤ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕`.trim();
+> 𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕.🥖`.trim();
 
         const buttons = [
             {
                 buttonId: `${usedPrefix}4vs4 anotar`,
-                buttonText: { displayText: "✏️ Anotarse (Titular)" },
+                buttonText: { displayText: "𝘑𝘶𝘨𝘢𝘥𝘰𝘳.🥖" },
                 type: 1,
             },
             {
                 buttonId: `${usedPrefix}4vs4 suplente`,
-                buttonText: { displayText: "🔄 Anotarse (Suplente)" },
+                buttonText: { displayText: "𝘚𝘶𝘱𝘭𝘦𝘯𝘵𝘦.🔄" },
                 type: 1,
             },
             {
                 buttonId: `${usedPrefix}4vs4 limpiar`,
-                buttonText: { displayText: "🗑 Limpiar Lista" },
+                buttonText: { displayText: "𝘓𝘪𝘮𝘱𝘪𝘢𝘳 𝘭𝘪𝘴𝘵𝘢.🗑" },
                 type: 1,
             },
         ];
@@ -100,13 +99,10 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     // Mostrar instrucciones si no hay argumentos
     if (!args[0]) {
         const instrucciones = `
-⚠️ *¿CÓMO USAR EL COMANDO?* ⚠️
-
-1️⃣ *Para crear la lista con hora y modalidad:*
-   Ejemplo: *${usedPrefix}4vs4 21:00 CLK*
-   o: *${usedPrefix}4vs4 9:00 PM INFINITO*
-
-*Una vez establecida la hora y modalidad, usa los botones para anotarte.*
+> ¿𝘊ó𝘮𝘰 𝘶𝘴𝘢𝘳 𝘦𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰?
+▸ 𝘗𝘢𝘳𝘢 𝘤𝘳𝘦𝘢𝘳 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢 𝘤𝘰𝘯 𝘩𝘰𝘳𝘢 𝘺 𝘮𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥:
+▸ 𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .4𝘷𝘴4 21:00 𝘊𝘓𝘒 / 4𝘷𝘴4 9:00 𝘊𝘓𝘒
+▸ 𝘜𝘯𝘢 𝘷𝘦𝘻 𝘦𝘴𝘵𝘢𝘣𝘭𝘦𝘤𝘪𝘥𝘢 𝘭𝘢 𝘩𝘰𝘳𝘢 𝘺 𝘮𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥, 𝘶𝘴𝘢 𝘭𝘰𝘴 𝘣𝘰𝘵𝘰𝘯𝘦𝘴 𝘱𝘢𝘳𝘢 𝘢𝘯𝘰𝘵𝘢𝘳𝘵𝘦. 🥖
         `.trim();
         await conn.sendMessage(m.chat, { text: instrucciones }, { quoted: m });
         return;
