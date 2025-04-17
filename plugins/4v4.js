@@ -36,8 +36,8 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         }
     };
 
-    // Función para enviar la lista actualizada
-    const enviarLista = async (mensajeAdicional = '') => {
+    // Función para enviar la lista actualizada (sin mensajes adicionales)
+    const enviarLista = async () => {
         const horaColStr = calcularHoraCol(horaMex);
         const texto = `
 ──────⚔──────╮
@@ -86,7 +86,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
             await conn.sendMessage(
                 m.chat,
                 {
-                    text: mensajeAdicional ? `${mensajeAdicional}\n\n${texto}` : texto,
+                    text: texto,
                     buttons,
                     viewOnce: true,
                 },
@@ -97,7 +97,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         }
     };
 
-    // Resto del código permanece exactamente igual...
+    // Mostrar instrucciones si no hay argumentos
     if (!args[0]) {
         const instrucciones = `
 ⚠️ *¿CÓMO USAR EL COMANDO?* ⚠️
@@ -112,6 +112,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         return;
     }
 
+    // Procesar hora y modalidad
     if (args.length >= 2 && !['anotar', 'suplente', 'limpiar'].includes(args[0].toLowerCase())) {
         const timeArg = args[0];
         let horaTemp = timeArg;
@@ -125,13 +126,15 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         
         if (/(\d{1,2}:\d{2}|\d{1,2})\s*(AM|PM)?$/i.test(horaTemp)) {
             horaMex = horaTemp;
-            await enviarLista(`⏰ *Hora establecida:* ${horaMex}\n🎮 *Modalidad:* ${modalidad}`);
+            await m.reply(`⏰ *Hora establecida:* ${horaMex}\n🎮 *Modalidad:* ${modalidad}`);
+            await enviarLista();
         } else {
             await m.reply('❌ *Formato de hora incorrecto.* Usa:\n- *9:00 PM* (12h)\n- *21:00* (24h)');
         }
         return;
     }
 
+    // Anotarse como titular
     if (args[0].toLowerCase() === 'anotar') {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
@@ -143,13 +146,15 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         const index = equipo.indexOf('');
         if (index !== -1) {
             equipo[index] = nombre;
-            await enviarLista(`✅ *${nombre}* te has anotado como *TITULAR* (Posición ${index + 1})`);
+            await m.reply(`✅ *${nombre}* te has anotado como *TITULAR* (Posición ${index + 1})`);
+            await enviarLista();
         } else {
             await m.reply(`📢 *${nombre}*, el equipo titular está completo. ¿Quieres anotarte como suplente? Usa *${usedPrefix}4vs4 suplente*`);
         }
         return;
     }
 
+    // Anotarse como suplente
     if (args[0].toLowerCase() === 'suplente') {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
@@ -161,17 +166,20 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         const index = suplentes.indexOf('');
         if (index !== -1) {
             suplentes[index] = nombre;
-            await enviarLista(`🔄 *${nombre}* te has anotado como *SUPLENTE* (Posición ${index + 1})`);
+            await m.reply(`🔄 *${nombre}* te has anotado como *SUPLENTE* (Posición ${index + 1})`);
+            await enviarLista();
         } else {
             await m.reply(`📢 *${nombre}*, los suplentes también están completos. Espera a que haya vacantes.`);
         }
         return;
     }
 
+    // Limpiar lista
     if (args[0].toLowerCase() === 'limpiar') {
         equipo = Array(4).fill('');
         suplentes = Array(2).fill('');
-        await enviarLista('🧹 *Lista limpiada completamente.* Todos los puestos están vacantes ahora.');
+        await m.reply('🧹 *Lista limpiada completamente.* Todos los puestos están vacantes ahora.');
+        await enviarLista();
         return;
     }
 }
