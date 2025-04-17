@@ -10,11 +10,9 @@ const calcularHoras = (horaInput) => {
         let [time, period] = horaInput.replace(/\./g, ':').split(/\s+/);
         let [hours, minutes = '00'] = time.split(':').map(Number);
         
-        // Convertir a 24h
         if (period?.toUpperCase() === 'PM' && hours < 12) hours += 12;
         if (period?.toUpperCase() === 'AM' && hours === 12) hours = 0;
         
-        // Ajustar horas (Colombia +1h)
         const mxHours = hours % 24;
         const coHours = (hours + 1) % 24;
         
@@ -52,15 +50,23 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 ┇➥ 𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔  
 ${equipo.map((j, i) => `┇➥ 👨🏻‍💻 ➤ ${j || `Posición ${i+1} (Vacante)`}`).join('\n')}  
 
-┇➥ ʚ 𝐒𝐔𝐏𝐟𝐄𝐍𝐓𝐄:  
+┇➥ ʚ 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄:  
 ${suplentes.map((s, i) => `┇➥ 👨🏻‍💼 ➤ ${s || `Suplente ${i+1} (Vacante)`}`).join('\n')}  
 ╰──────────────╯
 
 ➤ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕
 `.trim();
 
+        const buttons = [
+            { buttonId: `${usedPrefix}4vs4 anotar`, buttonText: { displayText: "✏️ Anotar Titular" }, type: 1 },
+            { buttonId: `${usedPrefix}4vs4 suplente`, buttonText: { displayText: "🔄 Anotar Suplente" }, type: 1 },
+            { buttonId: `${usedPrefix}4vs4 limpiar`, buttonText: { displayText: "🗑️ Limpiar Lista" }, type: 1 }
+        ];
+
         await conn.sendMessage(m.chat, { 
             text: mensaje ? `${mensaje}\n\n${texto}` : texto,
+            buttons: buttons,
+            footer: 'Selecciona una opción:',
             mentions: [...equipo, ...suplentes].filter(Boolean).map(u => u.replace('@', '') + '@s.whatsapp.net')
         }, { quoted: m });
     };
@@ -72,34 +78,43 @@ ${suplentes.map((s, i) => `┇➥ 👨🏻‍💼 ➤ ${s || `Suplente ${i+1} (V
     }
 
     // Establecer hora y modalidad
-    if (args.length >= 2) {
+    if (args.length >= 2 && !['anotar', 'suplente', 'limpiar'].includes(args[0].toLowerCase())) {
         hora = args[0].replace(/\./g, ':');
         modalidad = args.slice(1).join(' ').toUpperCase();
-        await enviarLista(`⏰ Hora establecida: ${hora}\n🎮 Modalidad: ${modalidad}`);
+        await enviarLista(`⏰ Hora: ${hora}\n🎮 Modalidad: ${modalidad}`);
         return;
     }
 
-    // Anotar jugadores
     const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
-    
+
     if (args[0].toLowerCase() === 'anotar') {
+        if (equipo.includes(nombre) || suplentes.includes(nombre)) {
+            await m.reply(`❌ ${nombre} ya estás registrado!`);
+            return;
+        }
+        
         const index = equipo.indexOf('');
         if (index !== -1) {
             equipo[index] = nombre;
-            await enviarLista(`✅ ${nombre} anotado como titular (Posición ${index+1})`);
+            await enviarLista(`✅ ${nombre} ahora es TITULAR (Posición ${index+1})`);
         } else {
-            await m.reply(`⚠️ Equipo lleno. Usa *${usedPrefix}4vs4 suplente*`);
+            await m.reply(`📢 ${nombre}, equipo lleno! Usa *${usedPrefix}4vs4 suplente*`);
         }
         return;
     }
 
     if (args[0].toLowerCase() === 'suplente') {
+        if (equipo.includes(nombre) || suplentes.includes(nombre)) {
+            await m.reply(`❌ ${nombre} ya estás registrado!`);
+            return;
+        }
+        
         const index = suplentes.indexOf('');
         if (index !== -1) {
             suplentes[index] = nombre;
-            await enviarLista(`🔄 ${nombre} anotado como suplente`);
+            await enviarLista(`🔄 ${nombre} ahora es SUPLENTE`);
         } else {
-            await m.reply('⚠️ Todos los puestos están llenos');
+            await m.reply('⚠️ Todos los puestos están llenos!');
         }
         return;
     }
@@ -107,11 +122,12 @@ ${suplentes.map((s, i) => `┇➥ 👨🏻‍💼 ➤ ${s || `Suplente ${i+1} (V
     if (args[0].toLowerCase() === 'limpiar') {
         equipo = Array(4).fill('');
         suplentes = Array(2).fill('');
-        await enviarLista('🧹 Lista reiniciada');
+        await enviarLista('🧹 LISTA REINICIADA');
         return;
     }
 };
 
 handler.command = /^4vs4$/i;
 handler.group = true;
+handler.admin = true;
 export default handler;
