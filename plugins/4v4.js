@@ -7,10 +7,19 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     // Procesar hora y modalidad si se proporcionan
     if (args.length >= 2 && !['anotar', 'suplente', 'limpiar'].includes(args[0].toLowerCase())) {
         const timeArg = args[0];
-        if (/(\d{1,2}:\d{2})|(\d{1,2}\s*(AM|PM))/i.test(timeArg)) {
-            hora = timeArg + (args[1] && ['AM', 'PM'].includes(args[1].toUpperCase()) ? ' ' + args[1].toUpperCase() : '';
-            const modalidadStartIndex = ['AM', 'PM'].includes(args[1]?.toUpperCase()) ? 2 : 1;
-            modalidad = args.slice(modalidadStartIndex).join(' ').toUpperCase();
+        let horaTemp = timeArg;
+        
+        // Verificar si el siguiente argumento es AM/PM
+        if (args[1] && ['AM', 'PM'].includes(args[1].toUpperCase())) {
+            horaTemp += ' ' + args[1].toUpperCase();
+            modalidad = args.slice(2).join(' ').toUpperCase();
+        } else {
+            modalidad = args.slice(1).join(' ').toUpperCase();
+        }
+        
+        // Validar formato de hora básico
+        if (/(\d{1,2}:\d{2}|\d{1,2})\s*(AM|PM)?$/i.test(horaTemp)) {
+            hora = horaTemp;
         }
     }
 
