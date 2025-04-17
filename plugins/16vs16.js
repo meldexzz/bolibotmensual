@@ -1,76 +1,96 @@
-const handler = async (m, { conn, args }) => {
-  if (args.length < 2) {
-    return await conn.sendMessage(m.chat, { text: '❌ Debes escribir el horario y el color de vestimenta. Ejemplo:\n\n.16vs16 23:45 negra' });
-  }
+código echo por //Barbosa 
+let inscritos16vs16 = []
 
-  let horaMex = args[0]; // Hora ingresada (México)
-  let colorVestimenta = args[1].toUpperCase(); // Color ingresado en mayúsculas
+const handler = async (m, { conn, args, command, usedPrefix }) => {
+    if (!args[0]) {
+        const texto = `
+*16 𝐕𝐄𝐑𝐒𝐔𝐒 16*
 
-  // Validar formato de hora (HH:MM)
-  if (!/^\d{1,2}:\d{2}$/.test(horaMex)) {
-    return await conn.sendMessage(m.chat, { text: '⚠️ Formato de hora inválido. Usa HH:MM. Ejemplo:\n\n.16vs16 23:45 negra' });
-  }
+⏱ 𝐇𝐎𝐑𝐀𝐑𝐈𝐎
+🇲🇽 𝐌𝐄𝐗𝐈𝐂𝐎 : 
+🇨🇴 𝐂𝐎𝐋𝐎𝐌𝐁𝐈𝐀 : 
 
-  // Convertir hora de México a Colombia (-1 hora de diferencia)
-  let [horas, minutos] = horaMex.split(':').map(Number);
-  let horaCol = (horas - 1 + 24) % 24; // Ajuste para evitar valores negativos
+➥ 𝐌𝐎𝐃𝐀𝐋𝐈𝐃𝐀𝐃: 
+➥ 𝐉𝐔𝐆𝐀𝐃𝐎𝐑𝐄𝐒:
 
-  // Formatear la hora (asegurar que siempre tenga 2 dígitos)
-  let horaColStr = `${horaCol.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+         𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 1
+    👑 ┇ 
+    🥷🏻 ┇  
+    🥷🏻 ┇ 
+    🥷🏻 ┇ 
 
-  // Mensaje actualizado con cuatro escuadras de 4 jugadores cada una y 4 suplentes
-  let lista = `
-╭──────⚔──────╮
-┇➤ 16 𝐕𝐒 16  
-╰──────⚔──────╯
+         𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 2
+    👑 ┇ 
+    🥷🏻 ┇ 
+    🥷🏻 ┇ 
+    🥷🏻 ┇ 
 
-╭────────────╮
-┇➤ ⏱ 𝐇𝐎𝐑𝐀𝐑𝐈𝐎  
-┇➤ 🇲🇽 𝐌𝐄𝐗 : ${horaMex}  
-┇➤ 🇨🇴 𝐂𝐎𝐋 : ${horaColStr}  
-┇➤ 🎽 𝐕𝐄𝐒𝐓𝐈𝐌𝐄𝐍𝐓𝐀: ${colorVestimenta}  
-╰────────────╯
+         𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 3
+    👑 ┇ 
+    🥷🏻 ┇ 
+    🥷🏻 ┇ 
+    🥷🏻 ┇ 
 
-╭───🏆 𝐄𝐒𝐂𝐔𝐀𝐃𝐑𝐀 𝟏 ───╮
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-╰────────────╯
+         𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 4
+    👑 ┇ 
+    🥷🏻 ┇ 
+    🥷🏻 ┇ 
+    🥷🏻 ┇ 
 
-╭───🔥 𝐄𝐒𝐂𝐔𝐀𝐃𝐑𝐀 𝟐 ───╮
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-╰────────────╯
+    ㅤʚ 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄𝐒:
+    🥷🏻 ┇ 
+    🥷🏻 ┇ 
 
-╭───⚡ 𝐄𝐒𝐂𝐔𝐀𝐃𝐑𝐀 𝟑 ───╮
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-╰────────────╯
+𝗣𝗔𝗥𝗧𝗜𝗖𝗜𝗣𝗔𝗡𝗧𝗘𝗦 𝗔𝗡𝗢𝗧𝗔𝗗𝗢𝗦:
+${inscritos16vs16.length === 0 ? 'Ninguno aún.' : inscritos16vs16.map((n, i) => `${i + 1}. ${n}`).join('\n')}
+        `.trim()
 
-╭───💀 𝐄𝐒𝐂𝐔𝐀𝐃𝐑𝐀 𝟒 ───╮
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-┇➥ 👨🏻‍💻 ➤  
-╰────────────╯
+        const buttons = [
+            {
+                buttonId: `${usedPrefix}16vs16 anotar`,
+                buttonText: { displayText: "✏️ Anotarse" },
+                type: 1,
+            },
+            {
+                buttonId: `${usedPrefix}16vs16 limpiar`,
+                buttonText: { displayText: "🗑 Limpiar Lista" },
+                type: 1,
+            },
+        ]
 
-╭───🔄 𝐒𝐔𝐏𝐋𝐄𝐍𝐓𝐄𝐒 ───╮
-┇➥ 👨🏻‍💼 ➤  
-┇➥ 👨🏻‍💼 ➤  
-┇➥ 👨🏻‍💼 ➤  
-┇➥ 👨🏻‍💼 ➤  
-╰────────────╯
+        await conn.sendMessage(
+            m.chat,
+            {
+                text: texto,
+                buttons,
+                viewOnce: true,
+            },
+            { quoted: m }
+        )
+        return
+    }
 
-➤ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕 / 𝙅𝙊𝙎𝙎 🥖
-  `.trim();
+    const subcmd = args[0].toLowerCase()
+    const nombre = m.pushName || 'Usuario'
 
-  await conn.sendMessage(m.chat, { text: lista });
-};
+    if (subcmd === 'anotar') {
+        if (inscritos16vs16.includes(nombre)) {
+            return m.reply('❗Ya estás anotado.')
+        }
+        inscritos16vs16.push(nombre)
+        return m.reply(`✅ *${nombre}* ha sido anotado.\nAhora hay *${inscritos16vs16.length}* participante(s).`)
+    }
 
-handler.command = /^(16vs16)$/i;
-export default handler;
+    if (subcmd === 'limpiar') {
+        inscritos16vs16 = []
+        return m.reply('🧹 Lista limpiada con éxito.')
+    }
+}
+
+handler.command = /^16vs16$/i
+handler.help = ['16vs16']
+handler.tags = ['freefire']
+handler.group = true
+handler.admin = true
+
+export default handler
