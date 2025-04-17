@@ -1,4 +1,3 @@
-código echo por //Barbosa 
 let inscritos16vs16 = []
 
 const handler = async (m, { conn, args, command, usedPrefix }) => {
