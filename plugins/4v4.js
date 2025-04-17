@@ -1,11 +1,44 @@
 let equipo = Array(4).fill(''); // 4 jugadores titulares
 let suplentes = Array(2).fill(''); // 2 suplentes
-let hora = '';
+let horaMex = '';
 let modalidad = '';
 
 const handler = async (m, { conn, args, command, usedPrefix }) => {
+    // Función para calcular hora Colombia (1 hora adelante de México)
+    const calcularHoraCol = (horaMex) => {
+        if (!horaMex) return 'Por definir';
+        
+        // Extraer horas y minutos
+        const [time, period] = horaMex.split(' ');
+        let [hours, minutes] = time.split(':').map(Number);
+        
+        // Si es formato 12 horas con PM (excepto 12 PM)
+        if (period === 'PM' && hours !== 12) hours += 12;
+        // Si es formato 12 horas con AM y es 12 AM
+        if (period === 'AM' && hours === 12) hours = 0;
+        
+        // Sumar 1 hora para Colombia
+        let hoursCol = hours + 1;
+        if (hoursCol >= 24) hoursCol -= 24;
+        
+        // Convertir de nuevo a formato 12 horas si es necesario
+        if (horaMex.includes('AM') || horaMex.includes('PM')) {
+            let periodCol = 'AM';
+            if (hoursCol >= 12) {
+                periodCol = 'PM';
+                if (hoursCol > 12) hoursCol -= 12;
+            }
+            if (hoursCol === 0) hoursCol = 12; // 12 AM
+            return `${hoursCol}:${minutes.toString().padStart(2, '0')} ${periodCol}`;
+        } else {
+            // Formato 24 horas
+            return `${hoursCol.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        }
+    };
+
     // Función para enviar la lista actualizada
     const enviarLista = async (mensajeAdicional = '') => {
+        const horaColStr = calcularHoraCol(horaMex);
         const texto = `
 ──────⚔──────╮
 ┇➤ 4 𝐕𝐄𝐑𝐒𝐔𝐒 4
@@ -13,8 +46,8 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 
 ╭──────────────╮
 ┇➤ ⏱ 𝐇𝐎𝐑𝐀𝐑𝐈𝐎  
-┇➤ 🇲🇽 𝐌𝐄𝐗 : ${hora || 'Por definir'}  
-┇➤ 🇨🇴 𝐂𝐎𝐋 : ${hora || 'Por definir'}  
+┇➤ 🇲🇽 𝐌𝐄𝐗 : ${horaMex || 'Por definir'}  
+┇➤ 🇨🇴 𝐂𝐎𝐋 : ${horaColStr}  
 
 ┇➤ 𝐌𝐎𝐃𝐀𝐋𝐈𝐃𝐀𝐃: ${modalidad || 'Por definir'}  
 ┇➥ 𝐉𝐔𝐆𝐀𝐃𝐎𝐑𝐄𝐒:  
@@ -29,7 +62,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 ┇➥ 👨🏻‍💼 ➤ ${suplentes[1] || 'Vacante'}
 ╰─────────────╯
 
-➤ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊 �𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕`.trim();
+➤ 𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕`.trim();
 
         const buttons = [
             {
@@ -49,7 +82,6 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
             },
         ];
 
-        // Eliminar el mensaje anterior si existe
         try {
             await conn.sendMessage(
                 m.chat,
@@ -65,7 +97,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         }
     };
 
-    // Mostrar instrucciones si no hay argumentos
+    // Resto del código permanece exactamente igual...
     if (!args[0]) {
         const instrucciones = `
 ⚠️ *¿CÓMO USAR EL COMANDO?* ⚠️
@@ -80,7 +112,6 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         return;
     }
 
-    // Procesar hora y modalidad
     if (args.length >= 2 && !['anotar', 'suplente', 'limpiar'].includes(args[0].toLowerCase())) {
         const timeArg = args[0];
         let horaTemp = timeArg;
@@ -93,15 +124,14 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         }
         
         if (/(\d{1,2}:\d{2}|\d{1,2})\s*(AM|PM)?$/i.test(horaTemp)) {
-            hora = horaTemp;
-            await enviarLista(`⏰ *Hora establecida:* ${hora}\n🎮 *Modalidad:* ${modalidad}`);
+            horaMex = horaTemp;
+            await enviarLista(`⏰ *Hora establecida:* ${horaMex}\n🎮 *Modalidad:* ${modalidad}`);
         } else {
             await m.reply('❌ *Formato de hora incorrecto.* Usa:\n- *9:00 PM* (12h)\n- *21:00* (24h)');
         }
         return;
     }
 
-    // Anotarse como titular
     if (args[0].toLowerCase() === 'anotar') {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
@@ -120,7 +150,6 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         return;
     }
 
-    // Anotarse como suplente
     if (args[0].toLowerCase() === 'suplente') {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
@@ -139,7 +168,6 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         return;
     }
 
-    // Limpiar lista
     if (args[0].toLowerCase() === 'limpiar') {
         equipo = Array(4).fill('');
         suplentes = Array(2).fill('');
