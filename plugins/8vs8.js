@@ -5,7 +5,7 @@ let horaMex = '';
 let modalidad = '';
 let ropa = '';
 
-const handler = async (m, { conn, args, command, usedPrefix, isAdmin, isROwner }) => {
+const handler = async (m, { conn, args, command, usedPrefix }) => {
     // Función para calcular hora Colombia (1 hora adelante de México)
     const calcularHoraCol = (horaMex) => {
         if (!horaMex) return 'Por definir';
@@ -147,7 +147,7 @@ const handler = async (m, { conn, args, command, usedPrefix, isAdmin, isROwner }
         return;
     }
 
-    // Anotarse en Escuadra 1 (¡SIN VALIDACIÓN DE ADMIN!)
+    // Anotarse en Escuadra 1 (¡PARA TODOS!)
     if (args[0].toLowerCase() === 'escuadra1') {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
@@ -167,7 +167,7 @@ const handler = async (m, { conn, args, command, usedPrefix, isAdmin, isROwner }
         return;
     }
 
-    // Anotarse en Escuadra 2 (¡SIN VALIDACIÓN DE ADMIN!)
+    // Anotarse en Escuadra 2 (¡PARA TODOS!)
     if (args[0].toLowerCase() === 'escuadra2') {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
@@ -187,7 +187,7 @@ const handler = async (m, { conn, args, command, usedPrefix, isAdmin, isROwner }
         return;
     }
 
-    // Anotarse como suplente (¡SIN VALIDACIÓN DE ADMIN!)
+    // Anotarse como suplente (¡PARA TODOS!)
     if (args[0].toLowerCase() === 'suplente') {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
@@ -207,19 +207,8 @@ const handler = async (m, { conn, args, command, usedPrefix, isAdmin, isROwner }
         return;
     }
 
-    // Limpiar lista (¡SOLO PARA ADMINS!)
+    // Limpiar lista (¡AHORA PARA TODOS!)
     if (args[0].toLowerCase() === 'limpiar') {
-        if (!m.isGroup) {
-            await m.reply('> ❌ _𝘌𝘚𝘛𝘌 𝘊𝘖𝘔𝘈𝘕𝘋𝘖 𝘚𝘖𝘓𝘖 𝘍𝘜𝘕𝘊𝘐𝘖𝘕𝘈 𝘌𝘕 𝘎𝘙𝘜𝘗𝘖𝘚._');
-            return;
-        }
-        
-        const isAdmin = isAdmin || isROwner || m.fromMe;
-        if (!isAdmin) {
-            await m.reply('> ❌ _𝘚𝘖𝘓𝘖 𝘓𝘖𝘚 𝘈𝘋𝘔𝘐𝘕𝘐𝘚𝘛𝘙𝘈𝘋𝘖𝘙𝘌𝘚 𝘗𝘜𝘌𝘋𝘌𝘕 𝘓𝘐𝘔𝘗𝘐𝘈𝘙 𝘓𝘈 𝘓𝘐𝘚𝘛𝘈._');
-            return;
-        }
-        
         escuadra1 = Array(4).fill('');
         escuadra2 = Array(4).fill('');
         suplentes = Array(2).fill('');
@@ -236,7 +225,7 @@ handler.help = [
     '8vs8 escuadra1 - Anotarse en Escuadra 1',
     '8vs8 escuadra2 - Anotarse en Escuadra 2',
     '8vs8 suplente - Anotarse como suplente',
-    '8vs8 limpiar - (Solo admins) Vaciar todas las posiciones'
+    '8vs8 limpiar - Vaciar todas las posiciones'
 ];
 handler.tags = ['freefire'];
 handler.group = true;
