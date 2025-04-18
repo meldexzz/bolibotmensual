@@ -3,6 +3,7 @@ let escuadra2 = Array(4).fill(''); // Escuadra 2 (4 jugadores)
 let suplentes = Array(2).fill(''); // 2 suplentes
 let horaMex = '';
 let modalidad = '';
+let ropa = '';
 
 const handler = async (m, { conn, args, command, usedPrefix }) => {
     // Función para calcular hora Colombia (1 hora adelante de México)
@@ -45,6 +46,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 ┇➤ 🇨🇴 𝐂𝐎𝐋 : ${horaColStr}  
 
 ┇➤ 𝐌𝐎𝐃𝐀𝐋𝐈𝐃𝐀𝐃: ${modalidad || 'Por definir'}  
+┇➤ 👕 𝐑𝐎𝐏𝐀: ${ropa || 'Por definir'}
 
 ┇➥ 𝗘𝘀𝗰𝘂𝗮𝗱𝗿𝗮 𝟭:  
 ┇➥ 👨🏻‍💻 ➤ ${escuadra1[0] || ''}
@@ -63,7 +65,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 ┇➥ 👨🏻‍💼 ➤ ${suplentes[1] || ''}
 ╰─────────────╯
 
-> 𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕.🥖`.trim();
+> 𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏 / �𝙀𝙇𝘿𝙀𝙓𝙕𝙕.🥖`.trim();
 
         const buttons = [
             {
@@ -81,12 +83,16 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
                 buttonText: { displayText: "𝘚𝘶𝘱𝘭𝘦𝘯𝘵𝘦.🔄" },
                 type: 1,
             },
-            {
+        ];
+
+        // Solo mostrar botón de limpiar si es admin
+        if (m.isGroupMsg && (conn.user.jid === conn.user.jid || m.isAdmin)) {
+            buttons.push({
                 buttonId: `${usedPrefix}8vs8 limpiar`,
                 buttonText: { displayText: "𝘓𝘪𝘮𝘱𝘪𝘢𝘳 𝘭𝘪𝘴𝘵𝘢.🗑" },
                 type: 1,
-            },
-        ];
+            });
+        }
 
         try {
             await conn.sendMessage(
@@ -106,21 +112,27 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     // Mostrar instrucciones si no hay argumentos
     if (!args[0]) {
         const instrucciones = `
-> ¿Cómo usar el comando?
+> ¿𝘊ó𝘮𝘰 𝘶𝘴𝘢𝘳 𝘦𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰?
 
-▸ Para crear la lista con hora y modalidad:
-▸ .8vs8 21:00 CLK 
-▸ .8vs8 9:00 PM CLK
-▸ Una vez establecida la hora y modalidad, usa los botones para anotarte en la escuadra que prefieras. 🥖
+▸ 𝘗𝘢𝘳𝘢 𝘤𝘳𝘦𝘢𝘳 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢 𝘤𝘰𝘯 𝘩𝘰𝘳𝘢, 𝘮𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥 𝘺 𝘳𝘰𝘱𝘢:
+▸ .8𝘷𝘴8 21:00 𝘊𝘓𝘒 𝘙𝘰𝘱𝘢:𝘊𝘢𝘮𝘶𝘧𝘭𝘢𝘫𝘦
+▸ .8𝘷𝘴8 9:00 𝘗𝘔 𝘊𝘓𝘒 𝘙𝘰𝘱𝘢:𝘝𝘦𝘳𝘥𝘦
+▸ 𝘜𝘯𝘢 𝘷𝘦𝘻 𝘦𝘴𝘵𝘢𝘣𝘭𝘦𝘤𝘪𝘥𝘢, 𝘶𝘴𝘢 𝘭𝘰𝘴 𝘣𝘰𝘵𝘰𝘯𝘦𝘴 𝘱𝘢𝘳𝘢 𝘢𝘯𝘰𝘵𝘢𝘳𝘵𝘦. 🥖
         `.trim();
         await conn.sendMessage(m.chat, { text: instrucciones }, { quoted: m });
         return;
     }
 
-    // Procesar hora y modalidad
+    // Procesar hora, modalidad y ropa
     if (args.length >= 2 && !['escuadra1', 'escuadra2', 'suplente', 'limpiar'].includes(args[0].toLowerCase())) {
         const timeArg = args[0];
         let horaTemp = timeArg;
+        let ropaIndex = args.findIndex(arg => arg.toLowerCase().startsWith('ropa:'));
+        
+        if (ropaIndex !== -1) {
+            ropa = args.slice(ropaIndex).join(' ').substring(5).trim();
+            args = args.slice(0, ropaIndex);
+        }
         
         if (args[1] && ['AM', 'PM'].includes(args[1].toUpperCase())) {
             horaTemp += ' ' + args[1].toUpperCase();
@@ -131,10 +143,10 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         
         if (/(\d{1,2}:\d{2}|\d{1,2})\s*(AM|PM)?$/i.test(horaTemp)) {
             horaMex = horaTemp;
-            await m.reply(`⏰ *Hora establecida:* ${horaMex}\n🎮 *Modalidad:* ${modalidad}`);
+            await m.reply(`> ⏰ _𝘏𝘰𝘳𝘢 𝘦𝘴𝘵𝘢𝘣𝘭𝘦𝘤𝘪𝘥𝘢:_ ${horaMex}\n> 🎮 _𝘔𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥:_ ${modalidad}\n> 👕 _𝘙𝘰𝘱𝘢:_ ${ropa || 'Por definir'}`);
             await enviarLista();
         } else {
-            await m.reply('❌ *Formato de hora incorrecto.* Usa:\n- *9:00 PM* (12h)\n- *21:00* (24h)');
+            await m.reply('> ❌ _𝘍𝘰𝘳𝘮𝘢𝘵𝘰 𝘥𝘦 𝘩𝘰𝘳𝘢 𝘪𝘯𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘰._ 𝘜𝘴𝘢:\n- _9:00 𝘗𝘔_ (12𝘩)\n- _21:00_ (24𝘩)');
         }
         return;
     }
@@ -144,17 +156,17 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
         if (escuadra1.includes(nombre) || escuadra2.includes(nombre) || suplentes.includes(nombre)) {
-            await m.reply(`❌ *${nombre}* ya estás anotado en la lista.`);
+            await m.reply(`> ❌ _${nombre}_ 𝘠𝘢 𝘦𝘴𝘵𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘦𝘯 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢.🥖`);
             return;
         }
         
         const index = escuadra1.indexOf('');
         if (index !== -1) {
             escuadra1[index] = nombre;
-            await m.reply(`✅ *${nombre}* te has anotado en la *Escuadra 1* (Posición ${index + 1})`);
+            await m.reply(`> ✅ _${nombre}_ 𝘛𝘦 𝘩𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘦𝘯 𝘭𝘢 _𝘌𝘴𝘤𝘶𝘢𝘥𝘳𝘢 1_ (𝘗𝘰𝘴𝘪𝘤𝘪ó𝘯 ${index + 1})`);
             await enviarLista();
         } else {
-            await m.reply(`📢 *${nombre}*, la Escuadra 1 está completa. ¿Quieres unirte a la Escuadra 2?`);
+            await m.reply(`> 📢 _${nombre}_, 𝘭𝘢 _𝘌𝘴𝘤𝘶𝘢𝘥𝘳𝘢 1_ 𝘦𝘴𝘵á 𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘢. ¿𝘘𝘶𝘪𝘦𝘳𝘦𝘴 𝘶𝘯𝘪𝘳𝘵𝘦 𝘢 𝘭𝘢 _𝘌𝘴𝘤𝘶𝘢𝘥𝘳𝘢 2_?`);
         }
         return;
     }
@@ -164,17 +176,17 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
         if (escuadra1.includes(nombre) || escuadra2.includes(nombre) || suplentes.includes(nombre)) {
-            await m.reply(`❌ *${nombre}* ya estás anotado en la lista.`);
+            await m.reply(`> ❌ _${nombre}_ 𝘠𝘢 𝘦𝘴𝘵𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘦𝘯 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢.🥖`);
             return;
         }
         
         const index = escuadra2.indexOf('');
         if (index !== -1) {
             escuadra2[index] = nombre;
-            await m.reply(`✅ *${nombre}* te has anotado en la *Escuadra 2* (Posición ${index + 1})`);
+            await m.reply(`> ✅ _${nombre}_ 𝘛𝘦 𝘩𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘦𝘯 𝘭𝘢 _𝘌𝘴𝘤𝘶𝘢𝘥𝘳𝘢 2_ (𝘗𝘰𝘴𝘪𝘤𝘪ó𝘯 ${index + 1})`);
             await enviarLista();
         } else {
-            await m.reply(`📢 *${nombre}*, la Escuadra 2 está completa. ¿Quieres anotarte como suplente?`);
+            await m.reply(`> 📢 _${nombre}_, 𝘭𝘢 _𝘌𝘴𝘤𝘶𝘢𝘥𝘳𝘢 2_ 𝘦𝘴𝘵á 𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘢. ¿𝘘𝘶𝘪𝘦𝘳𝘦𝘴 𝘢𝘯𝘰𝘵𝘢𝘳𝘵𝘦 𝘤𝘰𝘮𝘰 𝘴𝘶𝘱𝘭𝘦𝘯𝘵𝘦?`);
         }
         return;
     }
@@ -184,27 +196,33 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
         if (escuadra1.includes(nombre) || escuadra2.includes(nombre) || suplentes.includes(nombre)) {
-            await m.reply(`❌ *${nombre}* ya estás anotado en la lista.`);
+            await m.reply(`> ❌ _${nombre}_ 𝘠𝘢 𝘦𝘴𝘵𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘦𝘯 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢.🥖`);
             return;
         }
         
         const index = suplentes.indexOf('');
         if (index !== -1) {
             suplentes[index] = nombre;
-            await m.reply(`🔄 *${nombre}* te has anotado como *SUPLENTE* (Posición ${index + 1})`);
+            await m.reply(`> 🔄 _${nombre}_ 𝘛𝘦 𝘩𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘤𝘰𝘮𝘰 _𝘚𝘜𝘗𝘓𝘌𝘕𝘛𝘌_ (𝘗𝘰𝘴𝘪𝘤𝘪ó𝘯 ${index + 1})`);
             await enviarLista();
         } else {
-            await m.reply(`📢 *${nombre}*, los suplentes también están completos. Espera a que haya vacantes.`);
+            await m.reply(`> 📢 _${nombre}_, 𝘭𝘰𝘴 _𝘚𝘶𝘱𝘭𝘦𝘯𝘵𝘦𝘴_ 𝘵𝘢𝘮𝘣𝘪é𝘯 𝘦𝘴𝘵á𝘯 𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘰𝘴.`);
         }
         return;
     }
 
-    // Limpiar lista
+    // Limpiar lista (solo para admins)
     if (args[0].toLowerCase() === 'limpiar') {
+        if (!m.isGroupMsg || (!m.isAdmin && conn.user.jid !== m.sender)) {
+            await m.reply('> ❌ _𝘚𝘰𝘭𝘰 𝘭𝘰𝘴 𝘢𝘥𝘮𝘪𝘯𝘪𝘴𝘵𝘳𝘢𝘥𝘰𝘳𝘦𝘴 𝘱𝘶𝘦𝘥𝘦𝘯 𝘭𝘪𝘮𝘱𝘪𝘢𝘳 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢._');
+            return;
+        }
+        
         escuadra1 = Array(4).fill('');
         escuadra2 = Array(4).fill('');
         suplentes = Array(2).fill('');
-        await m.reply('🧹 *Lista limpiada completamente.* Todos los puestos están vacantes ahora.');
+        ropa = '';
+        await m.reply('> 🧹 _𝘓𝘪𝘴𝘵𝘢 𝘭𝘪𝘮𝘱𝘪𝘢𝘥𝘢 𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘢𝘮𝘦𝘯𝘵𝘦. 𝘛𝘰𝘥𝘰𝘴 𝘭𝘰𝘴 𝘱𝘶𝘦𝘴𝘵𝘰𝘴 𝘦𝘴𝘵á𝘯 𝘷𝘢𝘤𝘢𝘯𝘵𝘦𝘴 𝘢𝘩𝘰𝘳𝘢._');
         await enviarLista();
         return;
     }
@@ -212,14 +230,13 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 
 handler.command = /^8vs8$/i;
 handler.help = [
-    '8vs8 [hora] [modalidad] - Establece hora y modalidad',
+    '8vs8 [hora] [modalidad] [ropa:color] - Establece hora, modalidad y ropa',
     '8vs8 escuadra1 - Anotarse en Escuadra 1',
     '8vs8 escuadra2 - Anotarse en Escuadra 2',
     '8vs8 suplente - Anotarse como suplente',
-    '8vs8 limpiar - Vaciar todas las posiciones'
+    '8vs8 limpiar - (Solo admins) Vaciar todas las posiciones'
 ];
 handler.tags = ['freefire'];
 handler.group = true;
-handler.admin = true;
 
 export default handler;
