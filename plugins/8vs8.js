@@ -65,7 +65,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 ┇➥ 👨🏻‍💼 ➤ ${suplentes[1] || ''}
 ╰─────────────╯
 
-> 𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏 / �𝙀𝙇𝘿𝙀𝙓𝙕𝙕.🥖`.trim();
+> 𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏 / 𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕.🥖`.trim();
 
         const buttons = [
             {
@@ -83,16 +83,12 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
                 buttonText: { displayText: "𝘚𝘶𝘱𝘭𝘦𝘯𝘵𝘦.🔄" },
                 type: 1,
             },
-        ];
-
-        // Solo mostrar botón de limpiar si es admin
-        if (m.isGroupMsg && (conn.user.jid === conn.user.jid || m.isAdmin)) {
-            buttons.push({
+            {
                 buttonId: `${usedPrefix}8vs8 limpiar`,
                 buttonText: { displayText: "𝘓𝘪𝘮𝘱𝘪𝘢𝘳 𝘭𝘪𝘴𝘵𝘢.🗑" },
                 type: 1,
-            });
-        }
+            },
+        ];
 
         try {
             await conn.sendMessage(
@@ -213,8 +209,14 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
 
     // Limpiar lista (solo para admins)
     if (args[0].toLowerCase() === 'limpiar') {
-        if (!m.isGroupMsg || (!m.isAdmin && conn.user.jid !== m.sender)) {
-            await m.reply('> ❌ _𝘚𝘰𝘭𝘰 𝘭𝘰𝘴 𝘢𝘥𝘮𝘪𝘯𝘪𝘴𝘵𝘳𝘢𝘥𝘰𝘳𝘦𝘴 𝘱𝘶𝘦𝘥𝘦𝘯 𝘭𝘪𝘮𝘱𝘪𝘢𝘳 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢._');
+        if (!m.isGroup) {
+            await m.reply('> ❌ _𝘌𝘴𝘛𝘌 𝘊𝘖𝘔𝘈𝘕𝘋𝘖 𝘚𝘖𝘓𝘖 𝘍𝘜𝘕𝘊𝘐𝘖𝘕𝘈 𝘌𝘕 𝘎𝘙𝘜𝘗𝘖𝘚._');
+            return;
+        }
+        
+        const isAdmin = m.isAdmin || m.fromMe;
+        if (!isAdmin) {
+            await m.reply('> ❌ _𝘚𝘖𝘓𝘖 𝘓𝘖𝘚 𝘈𝘋𝘔𝘐𝘕𝘐𝘚𝘛𝘙𝘈𝘋𝘖𝘙𝘌𝘚 𝘗𝘜𝘌𝘋𝘌𝘕 𝘓𝘐𝘔𝘗𝘐𝘈𝘙 𝘓𝘈 𝘓𝘐𝘚𝘛𝘈._');
             return;
         }
         
@@ -222,7 +224,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         escuadra2 = Array(4).fill('');
         suplentes = Array(2).fill('');
         ropa = '';
-        await m.reply('> 🧹 _𝘓𝘪𝘴𝘵𝘢 𝘭𝘪𝘮𝘱𝘪𝘢𝘥𝘢 𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘢𝘮𝘦𝘯𝘵𝘦. 𝘛𝘰𝘥𝘰𝘴 𝘭𝘰𝘴 𝘱𝘶𝘦𝘴𝘵𝘰𝘴 𝘦𝘴𝘵á𝘯 𝘷𝘢𝘤𝘢𝘯𝘵𝘦𝘴 𝘢𝘩𝘰𝘳𝘢._');
+        await m.reply('> 🧹 _𝘓𝘐𝘚𝘛𝘈 𝘓𝘐𝘔𝘗𝘐𝘈𝘋𝘈 𝘊𝘖𝘔𝘗𝘓𝘌𝘛𝘈𝘔𝘌𝘕𝘛𝘌. 𝘛𝘖𝘋𝘖𝘚 𝘓𝘖𝘚 𝘗𝘜𝘌𝘚𝘛𝘖𝘚 𝘌𝘚𝘛𝘈𝘕 𝘝𝘈𝘊𝘐𝘖𝘚._');
         await enviarLista();
         return;
     }
