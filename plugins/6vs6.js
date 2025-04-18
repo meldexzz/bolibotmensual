@@ -40,7 +40,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     const enviarLista = async () => {
         const horaColStr = calcularHoraCol(horaMex);
         const texto = `
-──────⚔──────╮
+╭──────⚔──────╮
 ┇➤ 6 𝐕𝐄𝐑𝐒𝐔𝐒 6
 ╰──────⚔──────╯
 
