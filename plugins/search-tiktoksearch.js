@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 let HS = async (m, { conn, text }) => {
-if (!text)  return conn.reply(m.chat, `𝘐𝘯𝘨𝘳𝘦𝘴𝘦 𝘦𝘭 𝘵𝘪𝘬𝘵𝘰𝘬 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢 𝘣𝘶𝘴𝘤𝘢𝘳.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘵𝘪𝘬𝘵𝘰𝘬𝘴𝘦𝘢𝘳𝘤𝘩 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖`, m)
+if (!text)  return conn.reply(m.chat, `> 𝘐𝘯𝘨𝘳𝘦𝘴𝘦 𝘦𝘭 𝘵𝘪𝘬𝘵𝘰𝘬 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢 𝘣𝘶𝘴𝘤𝘢𝘳.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘵𝘪𝘬𝘵𝘰𝘬𝘴𝘦𝘢𝘳𝘤𝘩 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖`, m)
     
 try {
 let info = await tiktok.search(text)
