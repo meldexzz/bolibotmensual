@@ -86,6 +86,6 @@ handler.command = /^12vs12$/i
 handler.help = ['12vs12']
 handler.tags = ['freefire']
 handler.group = true
-handler.admin = true
+handler.admin = false
 
 export default handler
