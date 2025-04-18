@@ -36,7 +36,7 @@ let handler = async (m, { conn, text, usedPrefix }) => {
     });
   }
 
-  // Mensaje inicial indicando que Barboza Bot AI está procesando la música
+  // Mensaje inicial indicando que Bolillo Ai está procesando la música
   const key = await conn.sendMessage(m.chat, {
     text: `⌘━─━─≪ *Bolillo Bot AI* ≫─━─━⌘\n\n🔎 *Procesando tu solicitud, por favor espera...*`,
   });
