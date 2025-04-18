@@ -18,8 +18,7 @@ let api = await (await fetch(`https://archive-ui.tanakadomp.biz.id/download/spot
 let force = api.result.data;
 let imagen = force.image;
 
-let moon = `> 𝘗𝘰𝘸𝘦𝘳 𝘉𝘺 𝘉𝘰𝘭𝘪𝘭𝘭𝘰𝘉𝘰𝘵.🥖`
-moon += `> 𝘛𝘪𝘵𝘶𝘭𝘰: ${force.title}\n`;
+let moon = `> 𝘗𝘰𝘸𝘦𝘳 𝘉𝘺 𝘉𝘰𝘭𝘪𝘭𝘭𝘰𝘉𝘰𝘵.🥖\n\n> 𝘛𝘪𝘵𝘶𝘭𝘰: ${force.title}\n`;
 
 conn.sendFile(m.chat, imagen, 'MoonForce.jpg', moon, m, null);
 
