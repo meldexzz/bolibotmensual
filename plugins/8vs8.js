@@ -5,7 +5,7 @@ let horaMex = '';
 let modalidad = '';
 let ropa = '';
 
-const handler = async (m, { conn, args, command, usedPrefix }) => {
+const handler = async (m, { conn, args, command, usedPrefix, isAdmin, isROwner }) => {
     // Función para calcular hora Colombia (1 hora adelante de México)
     const calcularHoraCol = (horaMex) => {
         if (!horaMex) return 'Por definir';
@@ -214,7 +214,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
             return;
         }
         
-        const isAdmin = m.isAdmin || m.fromMe;
+        const isAdmin = m.isAdmin || isROwner || m.fromMe;
         if (!isAdmin) {
             await m.reply('> ❌ _𝘚𝘖𝘓𝘖 𝘓𝘖𝘚 𝘈𝘋𝘔𝘐𝘕𝘐𝘚𝘛𝘙𝘈𝘋𝘖𝘙𝘌𝘚 𝘗𝘜𝘌𝘋𝘌𝘕 𝘓𝘐𝘔𝘗𝘐𝘈𝘙 𝘓𝘈 𝘓𝘐𝘚𝘛𝘈._');
             return;
