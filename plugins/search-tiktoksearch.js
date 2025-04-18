@@ -2,27 +2,13 @@
 import axios from 'axios'
 
 let HS = async (m, { conn, text }) => {
-if (!text)  return conn.reply(m.chat, `❀ Ingresa el texto de lo que quieras buscar`, m)
+if (!text)  return conn.reply(m.chat, `𝘐𝘯𝘨𝘳𝘦𝘴𝘦 𝘦𝘭 𝘵𝘪𝘬𝘵𝘰𝘬 𝘲𝘶𝘦 𝘥𝘦𝘴𝘦𝘢 𝘣𝘶𝘴𝘤𝘢𝘳.\n\n𝘌𝘫𝘦𝘮𝘱𝘭𝘰: .𝘵𝘪𝘬𝘵𝘰𝘬𝘴𝘦𝘢𝘳𝘤𝘩 𝘣𝘰𝘭𝘪𝘭𝘭𝘰𝘴.🥖`, m)
     
 try {
 let info = await tiktok.search(text)
 let randomvid = Math.floor(Math.random() * info.length)
 let { metadata, estadisticas, audio, author, media } = info[randomvid]
-let HS =  `*[ INFO - VIDEO ]*
-- *Titulo :* ${metadata.titulo}
-- *Duracion :* ${metadata.duracion} segundos
-- *Creado :* ${metadata.creado}
-
-*[ INFO - ESTADISTICAS ]*
-- *Reproducciones :* ${estadisticas.reproducciones}
-- *Likes :* ${estadisticas.likes}
-- *Comentarios :* ${estadisticas.comentarios}
-- *Compartidos :* ${estadisticas.compartidos}
-- *Descargas :* ${estadisticas.descargas}
-
-*[ INFO - AUTHOR ]*
-- *name :* ${author.name}
-- *username :* ${author.username}`
+let HS =  `> 𝘗𝘰𝘸𝘦𝘳 𝘉𝘺 𝘉𝘰𝘭𝘪𝘭𝘭𝘰𝘉𝘰𝘵.🥖`
 
 
 await conn.sendFile(m.chat, media.no_watermark, 'HasumiBotFreeCodes.mp4', HS, m)
@@ -99,8 +85,8 @@ audio: "https://tikwm.com" + a.music,
 }
 }));
 } else {
-throw new Error('sin informacion disponible')
+throw new Error('> sin informacion disponible')
 }
 } catch (error) {
-throw new Error('TIKTOK SEARCH ERROR ' + error)
+throw new Error('> TIKTOK SEARCH ERROR ' + error)
 }}}
