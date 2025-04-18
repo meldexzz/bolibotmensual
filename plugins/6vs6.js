@@ -101,12 +101,12 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     // Mostrar instrucciones si no hay argumentos
     if (!args[0]) {
         const instrucciones = `
-> ¿𝘊ó𝘮𝘰 𝘶𝘴𝘢𝘳 �𝘦𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰?
+> ¿𝘊ó𝘮𝘰 𝘶𝘴𝘢𝘳 𝘦𝘭 𝘤𝘰𝘮𝘢𝘯𝘥𝘰?
 
-▸ �𝘢𝘳𝘢 �𝘳𝘦𝘢𝘳 �𝘢 �𝘪𝘴𝘵𝘢 �𝘰𝘯 �𝘰𝘳𝘢 𝘺 𝘮𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥:
+▸ 𝘗𝘢𝘳𝘢 𝘤𝘳𝘦𝘢𝘳 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢 𝘤𝘰𝘯 𝘩𝘰𝘳𝘢 𝘺 𝘮𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥:
 ▸ .6𝘷𝘴6 21:00 𝘊𝘓𝘒 
 ▸ .6𝘷𝘴6 9:00 𝘊𝘓𝘒
-▸ 𝘜𝘯𝘢 𝘷𝘦𝘻 𝘦𝘴𝘵𝘢𝘣𝘭𝘦𝘤𝘪𝘥𝘢 𝘭𝘢 𝘩𝘰𝘳𝘢 𝘺 �𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥, 𝘶𝘴𝘢 𝘭𝘰𝘴 𝘣𝘰𝘵𝘰𝘯𝘦𝘴 𝘱𝘢𝘳𝘢 𝘢𝘯𝘰𝘵𝘢𝘳𝘵𝘦. 🥖
+▸ 𝘜𝘯𝘢 𝘷𝘦𝘻 𝘦𝘴𝘵𝘢𝘣𝘭𝘦𝘤𝘪𝘥𝘢 𝘭𝘢 𝘩𝘰𝘳𝘢 𝘺 𝘮𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥, 𝘶𝘴𝘢 𝘭𝘰𝘴 𝘣𝘰𝘵𝘰𝘯𝘦𝘴 𝘱𝘢𝘳𝘢 𝘢𝘯𝘰𝘵𝘢𝘳𝘵𝘦. 🥖
         `.trim();
         await conn.sendMessage(m.chat, { text: instrucciones }, { quoted: m });
         return;
@@ -126,10 +126,10 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         
         if (/(\d{1,2}:\d{2}|\d{1,2})\s*(AM|PM)?$/i.test(horaTemp)) {
             horaMex = horaTemp;
-            await m.reply(`⏰ *Hora establecida:* ${horaMex}\n🎮 *Modalidad:* ${modalidad}`);
+            await m.reply(`> ⏰ 𝘏𝘰𝘳𝘢 𝘦𝘴𝘵𝘢𝘣𝘭𝘦𝘤𝘪𝘥𝘢: _${horaMex}_\n> 🎮 𝘔𝘰𝘥𝘢𝘭𝘪𝘥𝘢𝘥: _${modalidad}_`);
             await enviarLista();
         } else {
-            await m.reply('❌ *Formato de hora incorrecto.* Usa:\n- *9:00 PM* (12h)\n- *21:00* (24h)');
+            await m.reply('> 𝘍𝘰𝘳𝘮𝘢𝘵𝘰 𝘥𝘦 𝘩𝘰𝘳𝘢 𝘪𝘯𝘤𝘰𝘳𝘳𝘦𝘤𝘵𝘰. 𝘜𝘴𝘢:\𝘯- 9:00 𝘗𝘔 (12𝘩)\𝘯- 21:00 (24𝘩)');
         }
         return;
     }
@@ -139,17 +139,17 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
         if (equipo.includes(nombre) || suplentes.includes(nombre)) {
-            await m.reply(`❌ *${nombre}* ya estás anotado en la lista.`);
+            await m.reply(`> *_${nombre}_* 𝘠𝘢 𝘦𝘴𝘵𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘦𝘯 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢.🥖`);
             return;
         }
         
         const index = equipo.indexOf('');
         if (index !== -1) {
             equipo[index] = nombre;
-            await m.reply(`✅ *${nombre}* te has anotado como *TITULAR* (Posición ${index + 1})`);
+            await m.reply(`> *_${nombre}_* 𝘛𝘦 𝘩𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘤𝘰𝘮𝘰 𝘫𝘶𝘨𝘢𝘥𝘰𝘳.🥖`);
             await enviarLista();
         } else {
-            await m.reply(`📢 *${nombre}*, el equipo titular está completo. ¿Quieres anotarte como suplente? Usa *${usedPrefix}6vs6 suplente*`);
+            await m.reply(`> *_${nombre}_*, 𝘦𝘭 𝘦𝘲𝘶𝘪𝘱𝘰 𝘵𝘪𝘵𝘶𝘭𝘢𝘳 𝘦𝘴𝘵á 𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘰. ¿𝘘𝘶𝘪𝘦𝘳𝘦𝘴 𝘢𝘯𝘰𝘵𝘢𝘳𝘵𝘦 𝘤𝘰𝘮𝘰 𝘴𝘶𝘱𝘭𝘦𝘯𝘵𝘦?.🥖`);
         }
         return;
     }
@@ -159,17 +159,17 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
         const nombre = '@' + (m.pushName || m.sender.split('@')[0]);
         
         if (equipo.includes(nombre) || suplentes.includes(nombre)) {
-            await m.reply(`❌ *${nombre}* ya estás anotado en la lista.`);
+            await m.reply(`> *_${nombre}_* 𝘠𝘢 𝘦𝘴𝘵𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘦𝘯 𝘭𝘢 𝘭𝘪𝘴𝘵𝘢.🥖`);
             return;
         }
         
         const index = suplentes.indexOf('');
         if (index !== -1) {
             suplentes[index] = nombre;
-            await m.reply(`🔄 *${nombre}* te has anotado como *SUPLENTE* (Posición ${index + 1})`);
+            await m.reply(`> *_${nombre}_* 𝘛𝘦 𝘩𝘢𝘴 𝘢𝘯𝘰𝘵𝘢𝘥𝘰 𝘤𝘰𝘮𝘰 𝘴𝘶𝘱𝘭𝘦𝘯𝘵𝘦.🥖`);
             await enviarLista();
         } else {
-            await m.reply(`📢 *${nombre}*, los suplentes también están completos. Espera a que haya vacantes.`);
+            await m.reply(`> *_${nombre}_*, 𝘴𝘶𝘱𝘭𝘦𝘯𝘵𝘦𝘴 𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘰𝘴.🥖`);
         }
         return;
     }
@@ -178,7 +178,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     if (args[0].toLowerCase() === 'limpiar') {
         equipo = Array(6).fill('');
         suplentes = Array(2).fill('');
-        await m.reply('🧹 *Lista limpiada completamente.* Todos los puestos están vacantes ahora.');
+        await m.reply('> 𝘓𝘪𝘴𝘵𝘢 𝘭𝘪𝘮𝘱𝘪𝘢𝘥𝘢 𝘤𝘰𝘮𝘱𝘭𝘦𝘵𝘢𝘮𝘦𝘯𝘵𝘦. 𝘛𝘰𝘥𝘰𝘴 𝘭𝘰𝘴 𝘱𝘶𝘦𝘴𝘵𝘰𝘴 𝘦𝘴𝘵á𝘯 𝘷𝘢𝘤í𝘰𝘴 𝘢𝘩𝘰𝘳𝘢.🥖');
         await enviarLista();
         return;
     }
