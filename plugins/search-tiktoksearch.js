@@ -16,7 +16,7 @@ await conn.sendFile(m.chat, media.no_watermark, 'HasumiBotFreeCodes.mp4', HS, m)
 console.error(error)    
 }}
 
-HS.command = ['tiktoksearch']
+HS.command = ['tiktok']
 
 export default HS
 
