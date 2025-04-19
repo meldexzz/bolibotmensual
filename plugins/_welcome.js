@@ -4,7 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 
-// Obtener el nombre del usuario
 async function getUserName(conn, jid) {
   let name = await conn.getName(jid);
   if (!name) {
