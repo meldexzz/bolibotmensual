@@ -1,83 +1,107 @@
 import { WAMessageStubType } from '@whiskeysockets/baileys'
-import fs from 'fs'
-import path from 'path'
-import fetch from 'node-fetch'
 
+const paises = {
+  "1": "🇺🇸 Estados Unidos",
+  "34": "🇪🇸 España",
+  "52": "🇲🇽 México",
+  "54": "🇦🇷 Argentina",
+  "55": "🇧🇷 Brasil",
+  "56": "🇨🇱 Chile",
+  "57": "🇨🇴 Colombia",
+  "58": "🇻🇪 Venezuela",
+  "591": "🇧🇴 Bolivia",
+  "593": "🇪🇨 Ecuador",
+  "595": "🇵🇾 Paraguay",
+  "598": "🇺🇾 Uruguay",
+  "502": "🇬🇹 Guatemala",
+  "503": "🇸🇻 El Salvador",
+  "504": "🇭🇳 Honduras",
+  "505": "🇳🇮 Nicaragua",
+  "506": "🇨🇷 Costa Rica",
+  "507": "🇵🇦 Panamá",
+  "51": "🇵🇪 Perú",
+  "53": "🇨🇺 Cuba",
+  "91": "🇮🇳 India"
+};
 
-async function getUserName(conn, jid) {
-  let name = await conn.getName(jid)
-  if (!name) {
-    const contact = await conn.fetchContact(jid)
-    name = contact?.notify || contact?.name || jid.split('@')[0]
-  }
-  return name
+function obtenerPais(numero) {
+  let num = numero.replace("@s.whatsapp.net", "");
+  let codigo = Object.keys(paises).find(pref => num.startsWith(pref));
+  return paises[codigo] || "🌐 Desconocido";
 }
-
-function getGroupIcon(m) {
-  const dirPath = path.resolve('./groupIcons')
-  const groupIconPath = path.join(dirPath, `${m.chat}.jpg`)
-
-  if (fs.existsSync(groupIconPath)) {
-    return fs.readFileSync(groupIconPath)
-  }
-  return null
-}
-
-async function getUserProfilePicture(conn, jid) {
-  try {
-    const ppUrl = await conn.profilePictureUrl(jid, 'image')
-    if (ppUrl) {
-      return await (await fetch(ppUrl)).buffer()
-    }
-  } catch (e) {
-    
-  }
-  return null
-}
-
-
 
 export async function before(m, { conn, participants, groupMetadata }) {
-  if (!m.messageStubType || !m.isGroup) return !0
+  if (!m.messageStubType || !m.isGroup) return;
+  if (m.chat === "120363399850452737@g.us") return;
 
-  let who = m.messageStubParameters[0]
-  let taguser = `@${who.split('@')[0]}`
-  let chat = global.db.data.chats[m.chat]
+  let who = m.messageStubParameters[0];
+  let taguser = `@${who.split("@")[0]}`;
+  let chat = global.db.data.chats[m.chat];
+  let totalMembers = participants.length;
+  let date = new Date().toLocaleString("es-ES", { timeZone: "America/Mexico_City" });
 
-  
-  const userJid = m.messageStubParameters[0]
-  let img = await getUserProfilePicture(conn, userJid)
+  let pais = obtenerPais(who);
 
-  
-  if (!img) {
-    img = getGroupIcon(m)
-  }
+  let frasesBienvenida = [
+    "¡Esperamos que disfrutes tu estadía!",
+    "Recuerda leer las reglas del grupo.",
+    "Diviértete y participa en las conversaciones.",
+    "¡Un placer tenerte aquí!",
+    "¡Bienvenido! Esperamos que la pases genial con nosotros.",
+  ];
+  let frasesDespedida = [
+    "Esperamos verte pronto de nuevo.",
+    "¡Suerte en tus proyectos futuros!",
+    "Hasta la próxima, cuídate.",
+    "Nos vemos en otra ocasión.",
+    "¡Fue un placer tenerte aquí! Mucho éxito.",
+  ];
 
-  if (!img) {
-    img = imagen1
-  }
+  let fraseRandomBienvenida = frasesBienvenida[Math.floor(Math.random() * frasesBienvenida.length)];
+  let fraseRandomDespedida = frasesDespedida[Math.floor(Math.random() * frasesDespedida.length)];
 
- //const userName = await getUserName(conn, userJid)
+  let imagenUrl = 'https://i.postimg.cc/NFCz7s5V/IMG-5989.jpg';
 
   if (chat.welcome) {
-    let message = ''
-    if (m.messageStubType == 27) {
-      message = chat.sWelcome
-        ? chat.sWelcome.replace('@user', taguser).replace('@subject', groupMetadata.subject)
-        : `_⭐ Hola *${taguser}* Bienvenid@ al grupo *${groupMetadata.subject}*_`
-    } else if (m.messageStubType == 32) {
-      message = chat.sBye
-        ? chat.sBye.replace('@user', taguser).replace('@subject', groupMetadata.subject)
-        : `_👋 *${taguser}* Ha abandonado el grupo_`
-    } else if (m.messageStubType == 28) {
-      message = chat.sBye
-        ? chat.sBye.replace('@user', taguser).replace('@subject', groupMetadata.subject)
-        : `_☠️ *${taguser}* Fue expulsad@ del grupo_`
+    if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
+      let bienvenida = `
+*╭━━〔 *Bienvenido/a* 〕━━⬣*
+*┃ Usuario:* ${taguser}
+*┃ País:* ${pais}
+*┃ Grupo:* *${groupMetadata.subject}*
+*┃ Miembros:* *${totalMembers + 1}*
+*┃ Fecha:* *${date}*
+*╰━▣*
+*${fraseRandomBienvenida}*
+      `.trim();
+
+      await conn.sendMessage(m.chat, {
+        image: { url: imagenUrl },
+        caption: bienvenida,
+        mentions: [who]
+      });
     }
 
-    if (message) {
-      await conn.sendMessage(m.chat, { image: img, caption: message, mentions: [userJid] })
+    if (
+      m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE ||
+      m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE
+    ) {
+      let despedida = `
+*╭──〔 *Despedida* 〕──⬣*
+*┃ Usuario:* ${taguser}
+*┃ País:* ${pais}
+*┃ Grupo:* *${groupMetadata.subject}*
+*┃ Miembros:* *${totalMembers - 1}*
+*┃ Fecha:* *${date}*
+*╰━▣*
+*${fraseRandomDespedida}*
+      `.trim();
+
+      await conn.sendMessage(m.chat, {
+        image: { url: imagenUrl },
+        caption: despedida,
+        mentions: [who]
+      });
     }
   }
-  }
-    
+}
