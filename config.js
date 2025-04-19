@@ -37,7 +37,7 @@ global.namechannel = '𝘽𝙊𝙇𝙄𝙇𝙇𝙊𝘽𝙊𝙏.🥖'
 
 global.catalogo = fs.readFileSync('./storage/img/catalogo.png')
 global.miniurl = fs.readFileSync('./storage/img/miniurl.jpg')
-
+global.imagen1 = fs.readFileSync('./media/Menu1.jpg')
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.group = 'https://chat.whatsapp.com/IEOIaUiSZGg9UfZQWQXLth'
