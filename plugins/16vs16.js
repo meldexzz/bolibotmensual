@@ -90,6 +90,6 @@ handler.command = /^16vs16$/i
 handler.help = ['16vs16']
 handler.tags = ['freefire']
 handler.group = true
-handler.admin = true
+
 
 export default handler
