@@ -191,6 +191,5 @@ handler.help = [
 ];
 handler.tags = ['freefire'];
 handler.group = true;
-handler.admin = true;
 
 export default handler;
